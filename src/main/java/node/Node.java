@@ -77,6 +77,10 @@ public class Node {
                             }
                             connectedAddresses.add(address);
                             System.out.println("Connected to " + remoteNodeId + " at " + address);
+
+                            Message syncRequest = new Message(Message.MessageType.SYNC_REQUEST, logicalClock, nodeId);
+                            sendMessage(remoteNodeId, syncRequest);
+
                             new Thread(new ClientHandler(socket, in, out)).start();
                         } else {
                             System.out.println("Unexpected message type during handshake from " + address);
@@ -105,8 +109,8 @@ public class Node {
         Message msg = new Message(Message.MessageType.REQUEST, logicalClock, nodeId);
         broadcast(msg);
 
-        // wait for all nodes to reply
-        while (repliedNodes.size() < otherNodesAddresses.size()) {
+        // wait for active nodes to reply
+        while (repliedNodes.size() < outputStreams.size()) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -215,7 +219,7 @@ public class Node {
             case REPLY:
                 repliedNodes.add(msg.getSenderId());
                 System.out.println("Received REPLY from " + msg.getSenderId());
-                if (repliedNodes.size() == otherNodesAddresses.size()) {
+                if (repliedNodes.size() == outputStreams.size()) {
                     notifyAll();
                 }
                 break;
@@ -223,6 +227,17 @@ public class Node {
                 System.out.println("Received UPDATE from " + msg.getSenderId());
                 sharedVariable = msg.getUpdatedValue();
                 System.out.println("Node " + msg.getSenderId() + " updated shared variable to: " + sharedVariable);
+                break;
+            case SYNC_REQUEST:
+                // Обработка запроса синхронизации
+                System.out.println("Получен SYNC_REQUEST от " + msg.getSenderId());
+                Message syncResponse = new Message(Message.MessageType.SYNC_RESPONSE, logicalClock, nodeId, sharedVariable);
+                sendMessage(msg.getSenderId(), syncResponse);
+                break;
+            case SYNC_RESPONSE:
+                // Обработка ответа на запрос синхронизации
+                System.out.println("Получен SYNC_RESPONSE от " + msg.getSenderId() + ": " + msg.getUpdatedValue());
+                sharedVariable = msg.getUpdatedValue();
                 break;
             default:
                 break;

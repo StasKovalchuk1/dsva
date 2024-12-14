@@ -7,7 +7,9 @@ public class Message implements Serializable {
         REQUEST,
         REPLY,
         UPDATE,
-        NODE_ID
+        NODE_ID,
+        SYNC_REQUEST,
+        SYNC_RESPONSE
     }
 
     private MessageType type;
