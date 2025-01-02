@@ -8,8 +8,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        if (args.length < 3) {
-            System.out.println("Incorrect input. Use: java Node <nodeId> <port> <otherNode1Host>:<port> <otherNode2Host>:<port> ...");
+        if (args.length < 2) {
+//        if (args.length < 3) {
+            System.out.println("Incorrect input. Use: java -jar Node.jar <nodeId> <port> <otherNode1Host>:<port> <otherNode2Host>:<port> ...");
             System.exit(0);
         }
 

@@ -9,13 +9,15 @@ public class Message implements Serializable {
         UPDATE,
         NODE_ID,
         SYNC_REQUEST,
-        SYNC_RESPONSE
+        SYNC_RESPONSE,
+        LEAVE
     }
 
     private MessageType type;
     private int timestamp;
     private String senderId;
     private String updatedValue;
+    private int mainPort;
 
     public Message(MessageType type, int timestamp, String senderId) {
         this.type = type;
@@ -28,6 +30,13 @@ public class Message implements Serializable {
         this.timestamp = timestamp;
         this.senderId = senderId;
         this.updatedValue = updatedValue;
+    }
+
+    public Message(MessageType type, int timestamp, String senderId, int mainPort) {
+        this.type = type;
+        this.timestamp = timestamp;
+        this.senderId = senderId;
+        this.mainPort = mainPort;
     }
 
     public MessageType getType() {
@@ -45,4 +54,6 @@ public class Message implements Serializable {
     public String getUpdatedValue() {
         return updatedValue;
     }
+
+    public int getMainPort() { return mainPort; }
 }
