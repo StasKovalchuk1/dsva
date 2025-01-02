@@ -1,0 +1,1149 @@
+2025-01-02 19:50:35 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 19:50:36 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 19:50:38 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 19:50:38 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 19:50:39 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 19:50:40 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 19:52:01 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:51928
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 19:52:01 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node2
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 19:52:01 [Thread-12] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node2
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 19:52:01 [Thread-12] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:51929
+2025-01-02 19:52:01 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:52:01 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 19:52:01 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 19:52:01 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 19:52:01 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 19:52:01 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 19:52:01 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 19:52:04 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 19:52:04 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:51931
+2025-01-02 19:52:04 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 19:52:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 19:52:04 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 19:52:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:52:04 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 19:52:04 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 19:52:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 19:52:04 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 19:52:04 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 19:52:04 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 19:52:07 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 19:52:07 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 19:52:07 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 19:52:11 [Thread-14] INFO  node.Node - [LogicalClock:21] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 19:52:11 [Thread-14] INFO  node.Node - [LogicalClock:21] Broadcasted REQUEST message for critical section.
+2025-01-02 19:52:11 [pool-1-thread-3] INFO  node.Node - [LogicalClock:22] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:52:11 [pool-1-thread-2] INFO  node.Node - [LogicalClock:23] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:52:11 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 19:52:11 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 19:52:11 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 19:52:11 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 19:52:11 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 19:52:11 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 19:52:11 [Thread-12] INFO  node.Node - [LogicalClock:24] Received REPLY from Node2
+2025-01-02 19:52:11 [Thread-11] INFO  node.Node - [LogicalClock:25] Received REPLY from Node1
+2025-01-02 19:52:11 [Thread-11] INFO  node.Node - [LogicalClock:25] All REPLY messages received. Notifying waiting thread.
+2025-01-02 19:52:11 [Thread-14] INFO  node.Node - [LogicalClock:25] Node Node3 entered critical section.
+2025-01-02 19:52:14 [Thread-14] INFO  node.Node - [LogicalClock:25] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 19:52:14 [Thread-14] INFO  node.Node - [LogicalClock:25] Broadcasted REQUEST message for critical section.
+2025-01-02 19:52:14 [pool-1-thread-1] INFO  node.Node - [LogicalClock:26] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:52:14 [pool-1-thread-4] INFO  node.Node - [LogicalClock:27] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:52:14 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 19:52:14 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 19:52:14 [Thread-12] INFO  node.Node - [LogicalClock:27] Sent REPLY to Node2
+2025-01-02 19:52:14 [Thread-12] INFO  node.Node - [LogicalClock:26] Deferred REPLY to Node2
+2025-01-02 19:52:14 [pool-1-thread-2] INFO  node.Node - [LogicalClock:28] Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 19:52:14 [Thread-11] INFO  node.Node - [LogicalClock:28] Received REPLY from Node1
+2025-01-02 19:52:17 [Thread-14] INFO  node.Node - [LogicalClock:29] Sending message REQUEST to all nodes - [Node3, Node2]
+2025-01-02 19:52:17 [Thread-14] INFO  node.Node - [LogicalClock:29] Broadcasted REQUEST message for critical section.
+2025-01-02 19:52:17 [pool-1-thread-4] INFO  node.Node - [LogicalClock:30] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:52:17 [pool-1-thread-1] INFO  node.Node - [LogicalClock:31] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:52:17 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 19:52:17 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 19:52:17 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 19:52:17 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 19:52:26 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:30] Shared variable changed to: туц туц
+2025-01-02 19:52:26 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 19:52:26 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Shared variable updated to: туц туц
+2025-01-02 19:52:26 [pool-1-thread-4] INFO  node.Node - [LogicalClock:32] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 19:52:26 [pool-1-thread-1] INFO  node.Node - [LogicalClock:33] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 19:52:26 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 19:52:26 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 19:52:26 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: туц туц
+2025-01-02 19:52:26 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: туц туц
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node2
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6002 for node Node2
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:32] Node Node2 has been removed from connections.
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:32] Connection with node Node2 has been terminated.
+2025-01-02 19:54:03 [Thread-11] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node1
+2025-01-02 19:54:03 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:32] Node Node1 has been killed and disconnected.
+2025-01-02 19:54:03 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:32] Node Node3 has been killed and disconnected.
+2025-01-02 19:54:03 [Thread-11] INFO  node.Node - [LogicalClock:32] Node Node1 has been removed from connections.
+2025-01-02 19:54:03 [Thread-11] INFO  node.Node - [LogicalClock:32] Connection with node Node1 has been terminated.
+2025-01-02 19:54:03 [Thread-14] INFO  node.Node - [LogicalClock:32] Node Node2 entered critical section.
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:33] Closed ObjectOutputStream for node Node2
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:33] Removed address localhost/127.0.0.1:6002 for node Node2
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:33] Node Node2 has been removed from connections.
+2025-01-02 19:54:03 [Thread-12] INFO  node.Node - [LogicalClock:33] Connection with node Node2 has been terminated.
+2025-01-02 19:54:18 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:32] Node Node2 is being revived. Reconnecting to known nodes.
+2025-01-02 19:54:18 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:32] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:33] Sent NODE_ID to /127.0.0.1:51984
+2025-01-02 19:54:18 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 19:54:18 [pool-1-thread-2] INFO  node.Node - [LogicalClock:35] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:54:18 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:33] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:34] Sent SYNC_REQUEST to Node2
+2025-01-02 19:54:18 [pool-1-thread-3] INFO  node.Node - [LogicalClock:35] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:37] Received SYNC_REQUEST from Node1
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:38] Sent SYNC_RESPONSE to Node1
+2025-01-02 19:54:18 [pool-1-thread-3] INFO  node.Node - [LogicalClock:39] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:36] Received SYNC_REQUEST from Node2
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:37] Sent SYNC_RESPONSE to Node2
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:34] Sent NODE_ID to /127.0.0.1:51985
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:39] Received SYNC_RESPONSE from Node2: туц туц
+2025-01-02 19:54:18 [pool-1-thread-2] INFO  node.Node - [LogicalClock:40] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 19:54:18 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:39] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 19:54:18 [pool-1-thread-1] INFO  node.Node - [LogicalClock:41] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:42] Received SYNC_RESPONSE from Node1: туц туц
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:34] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 19:54:18 [Thread-0] INFO  node.Node - [LogicalClock:35] Sent SYNC_REQUEST to Node2
+2025-01-02 19:54:18 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:41] Received SYNC_REQUEST from Node2
+2025-01-02 19:54:18 [Thread-16] INFO  node.Node - [LogicalClock:43] Received SYNC_REQUEST from Node3
+2025-01-02 19:54:18 [Thread-16] INFO  node.Node - [LogicalClock:44] Sent SYNC_RESPONSE to Node3
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:42] Sent SYNC_RESPONSE to Node2
+2025-01-02 19:54:18 [pool-1-thread-2] INFO  node.Node - [LogicalClock:43] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 19:54:18 [pool-1-thread-4] INFO  node.Node - [LogicalClock:45] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 19:54:18 [Thread-16] INFO  node.Node - [LogicalClock:46] Received SYNC_RESPONSE from Node3: туц туц
+2025-01-02 19:54:18 [Thread-15] INFO  node.Node - [LogicalClock:45] Received SYNC_RESPONSE from Node2: туц туц
+2025-01-02 19:54:53 [Thread-17] INFO  node.Node - [LogicalClock:47] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 19:54:53 [Thread-17] INFO  node.Node - [LogicalClock:47] Broadcasted REQUEST message for critical section.
+2025-01-02 19:54:53 [pool-1-thread-2] INFO  node.Node - [LogicalClock:48] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 19:54:53 [pool-1-thread-3] INFO  node.Node - [LogicalClock:49] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 19:54:53 [Thread-15] INFO  node.Node - [LogicalClock:48] Received REQUEST from Node2
+2025-01-02 19:54:53 [Thread-15] INFO  node.Node - [LogicalClock:48] Deferred REPLY to Node2
+2025-01-02 19:54:53 [Thread-15] INFO  node.Node - [LogicalClock:48] Received REQUEST from Node2
+2025-01-02 19:54:53 [Thread-15] INFO  node.Node - [LogicalClock:48] Deferred REPLY to Node2
+2025-01-02 19:54:59 [Thread-13] INFO  node.Node - [LogicalClock:48] Closed ObjectOutputStream for node Node3
+2025-01-02 19:54:59 [Thread-13] INFO  node.Node - [LogicalClock:48] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 19:54:59 [Thread-13] INFO  node.Node - [LogicalClock:48] Node Node3 has been removed from connections.
+2025-01-02 19:54:59 [Thread-13] INFO  node.Node - [LogicalClock:48] Connection with node Node3 has been terminated.
+2025-01-02 19:54:59 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:48] Node Node1 has been killed and disconnected.
+2025-01-02 19:54:59 [Thread-11] INFO  node.Node - [LogicalClock:48] Closed ObjectOutputStream for node Node1
+2025-01-02 19:54:59 [Thread-11] INFO  node.Node - [LogicalClock:48] Node Node1 has been removed from connections.
+2025-01-02 19:54:59 [Thread-11] INFO  node.Node - [LogicalClock:48] Connection with node Node1 has been terminated.
+2025-01-02 19:54:59 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:48] Node Node2 has been killed and disconnected.
+2025-01-02 19:54:59 [Thread-15] INFO  node.Node - [LogicalClock:48] Closed ObjectOutputStream for node Node2
+2025-01-02 19:54:59 [Thread-15] INFO  node.Node - [LogicalClock:48] Node Node2 has been removed from connections.
+2025-01-02 19:54:59 [Thread-15] INFO  node.Node - [LogicalClock:48] Connection with node Node2 has been terminated.
+2025-01-02 19:54:59 [Thread-16] INFO  node.Node - [LogicalClock:49] Closed ObjectOutputStream for node Node3
+2025-01-02 19:54:59 [Thread-16] INFO  node.Node - [LogicalClock:49] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 19:54:59 [Thread-16] INFO  node.Node - [LogicalClock:49] Node Node3 has been removed from connections.
+2025-01-02 19:54:59 [Thread-16] INFO  node.Node - [LogicalClock:49] Connection with node Node3 has been terminated.
+2025-01-02 19:59:03 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 19:59:03 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 19:59:06 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 19:59:06 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 19:59:08 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 19:59:08 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 20:07:29 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52257
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:07:29 [Thread-12] INFO  node.Node - [LogicalClock:5] Received SYNC_REQUEST from Node2
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 20:07:29 [Thread-12] INFO  node.Node - [LogicalClock:6] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:7] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:07:29 [Thread-12] INFO  node.Node - [LogicalClock:8] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52258
+2025-01-02 20:07:29 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:07:29 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:07:29 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 20:07:29 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:07:29 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:07:29 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:07:29 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:07:34 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:07:34 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:52263
+2025-01-02 20:07:34 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:07:34 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:07:34 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 20:07:34 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:07:34 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 20:07:34 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:07:34 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:07:34 [pool-1-thread-1] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:07:34 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:07:34 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:07:39 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 20:07:39 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:07:39 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 20:07:47 [Thread-14] INFO  node.Node - [LogicalClock:21] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 20:07:47 [Thread-14] INFO  node.Node - [LogicalClock:21] Broadcasted REQUEST message for critical section.
+2025-01-02 20:07:47 [pool-1-thread-3] INFO  node.Node - [LogicalClock:22] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:07:47 [pool-1-thread-2] INFO  node.Node - [LogicalClock:23] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:07:47 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:07:47 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:07:47 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:07:47 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:07:47 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:07:47 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:07:47 [Thread-12] INFO  node.Node - [LogicalClock:24] Received REPLY from Node2
+2025-01-02 20:07:47 [Thread-11] INFO  node.Node - [LogicalClock:25] Received REPLY from Node1
+2025-01-02 20:07:47 [Thread-11] INFO  node.Node - [LogicalClock:25] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:07:47 [Thread-14] INFO  node.Node - [LogicalClock:25] Node Node3 entered critical section.
+2025-01-02 20:07:52 [Thread-14] INFO  node.Node - [LogicalClock:25] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 20:07:52 [Thread-14] INFO  node.Node - [LogicalClock:25] Broadcasted REQUEST message for critical section.
+2025-01-02 20:07:52 [pool-1-thread-4] INFO  node.Node - [LogicalClock:26] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:07:52 [pool-1-thread-2] INFO  node.Node - [LogicalClock:27] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:07:52 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:07:52 [Thread-12] INFO  node.Node - [LogicalClock:26] Deferred REPLY to Node2
+2025-01-02 20:07:52 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:07:52 [Thread-12] INFO  node.Node - [LogicalClock:27] Sent REPLY to Node2
+2025-01-02 20:07:52 [pool-1-thread-2] INFO  node.Node - [LogicalClock:28] Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 20:07:52 [Thread-11] INFO  node.Node - [LogicalClock:28] Received REPLY from Node1
+2025-01-02 20:07:58 [Thread-14] INFO  node.Node - [LogicalClock:29] Sending message REQUEST to all nodes - [Node3, Node2]
+2025-01-02 20:07:58 [Thread-14] INFO  node.Node - [LogicalClock:29] Broadcasted REQUEST message for critical section.
+2025-01-02 20:07:58 [pool-1-thread-1] INFO  node.Node - [LogicalClock:30] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:07:58 [pool-1-thread-4] INFO  node.Node - [LogicalClock:31] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:07:58 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:07:58 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:07:58 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:07:58 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:08:10 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:30] Shared variable changed to: туц туц
+2025-01-02 20:08:10 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 20:08:10 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Shared variable updated to: туц туц
+2025-01-02 20:08:10 [pool-1-thread-4] INFO  node.Node - [LogicalClock:33] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 20:08:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:32] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:08:10 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:08:10 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:08:10 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: туц туц
+2025-01-02 20:08:10 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: туц туц
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:08:52 [Thread-11] INFO  node.Node - [LogicalClock:33] Closed ObjectOutputStream for node Node1
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:08:52 [Thread-11] INFO  node.Node - [LogicalClock:33] Node Node1 has been removed from connections.
+2025-01-02 20:08:52 [Thread-11] INFO  node.Node - [LogicalClock:33] Connection with node Node1 has been terminated.
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:08:52 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node1 has been killed and disconnected.
+2025-01-02 20:08:52 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node2 has been killed and disconnected.
+2025-01-02 20:08:52 [Thread-12] INFO  node.Node - [LogicalClock:33] Closed ObjectOutputStream for node Node2
+2025-01-02 20:08:52 [Thread-12] INFO  node.Node - [LogicalClock:33] Node Node2 has been removed from connections.
+2025-01-02 20:08:52 [Thread-12] INFO  node.Node - [LogicalClock:33] Connection with node Node2 has been terminated.
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:08:52 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:08:52 [Thread-14] INFO  node.Node - [LogicalClock:32] Node Node2 entered critical section.
+2025-01-02 20:09:52 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:32] Shared variable changed to: пп пп
+2025-01-02 20:09:52 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:33] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 20:09:52 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:33] Shared variable updated to: пп пп
+2025-01-02 20:09:52 [pool-1-thread-1] INFO  node.Node - [LogicalClock:34] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:09:52 [Thread-12] INFO  node.Node - [LogicalClock:34] Received UPDATE from Node2
+2025-01-02 20:09:52 [Thread-12] INFO  node.Node - [LogicalClock:34] Node Node2 updated shared variable to: пп пп
+2025-01-02 20:10:03 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Sent deferred REPLY to Node1
+2025-01-02 20:10:03 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Node Node2 left critical section.
+2025-01-02 20:10:03 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message REPLY sent to node Node1 with delay 0ms
+2025-01-02 20:10:03 [Thread-12] INFO  node.Node - [LogicalClock:36] Received REPLY from Node2
+2025-01-02 20:10:03 [Thread-12] INFO  node.Node - [LogicalClock:36] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:10:03 [Thread-14] INFO  node.Node - [LogicalClock:36] Node Node1 entered critical section.
+2025-01-02 20:10:37 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:36] Node Node1 left critical section.
+2025-01-02 20:10:46 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 20:10:46 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 20:10:46 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:34] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:10:46 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:37] Sent NODE_ID to /127.0.0.1:52339
+2025-01-02 20:10:46 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:36] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:37] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:38] Sent SYNC_REQUEST to Node3
+2025-01-02 20:10:46 [pool-1-thread-3] INFO  node.Node - [LogicalClock:39] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:39] Received SYNC_REQUEST from Node1
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:40] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:40] Received SYNC_REQUEST from Node3
+2025-01-02 20:10:46 [pool-1-thread-2] INFO  node.Node - [LogicalClock:41] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:41] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:10:46 [pool-1-thread-2] INFO  node.Node - [LogicalClock:42] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:43] Received SYNC_RESPONSE from Node3: туц туц
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:42] Received SYNC_RESPONSE from Node1: пп пп
+2025-01-02 20:10:46 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:42] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:10:46 [pool-1-thread-1] INFO  node.Node - [LogicalClock:44] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:37] Sent NODE_ID to /127.0.0.1:52340
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:37] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:10:46 [Thread-0] INFO  node.Node - [LogicalClock:38] Sent SYNC_REQUEST to Node3
+2025-01-02 20:10:46 [pool-1-thread-4] INFO  node.Node - [LogicalClock:39] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:10:46 [Thread-16] INFO  node.Node - [LogicalClock:45] Received SYNC_REQUEST from Node2
+2025-01-02 20:10:46 [Thread-16] INFO  node.Node - [LogicalClock:46] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:44] Received SYNC_REQUEST from Node3
+2025-01-02 20:10:46 [pool-1-thread-4] INFO  node.Node - [LogicalClock:47] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:45] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:10:46 [pool-1-thread-2] INFO  node.Node - [LogicalClock:46] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:10:46 [Thread-15] INFO  node.Node - [LogicalClock:47] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 20:10:46 [Thread-16] INFO  node.Node - [LogicalClock:48] Received SYNC_RESPONSE from Node2: пп пп
+2025-01-02 20:25:03 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 20:25:03 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 20:25:06 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 20:25:07 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 20:25:09 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 20:25:09 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 20:25:23 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52641
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:25:23 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node2
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:25:23 [Thread-12] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:25:23 [Thread-12] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:25:23 [Thread-12] INFO  node.Node - [LogicalClock:7] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:7] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52642
+2025-01-02 20:25:23 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:25:23 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:25:23 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 20:25:23 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:25:23 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:25:23 [Thread-11] INFO  node.Node - [LogicalClock:13] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 20:25:23 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:25:23 [Thread-13] INFO  node.Node - [LogicalClock:14] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:25:27 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:25:27 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:52645
+2025-01-02 20:25:27 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:25:27 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:25:27 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 20:25:27 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:25:27 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 20:25:27 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:25:27 [pool-1-thread-1] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:25:27 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:25:27 [Thread-12] INFO  node.Node - [LogicalClock:20] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 20:25:27 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:25:27 [Thread-13] INFO  node.Node - [LogicalClock:19] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:25:31 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 20:25:31 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:25:31 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 20:25:40 [Thread-14] INFO  node.Node - [LogicalClock:21] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 20:25:40 [Thread-14] INFO  node.Node - [LogicalClock:21] Broadcasted REQUEST message for critical section.
+2025-01-02 20:25:40 [pool-1-thread-3] INFO  node.Node - [LogicalClock:22] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:25:40 [pool-1-thread-2] INFO  node.Node - [LogicalClock:23] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:25:40 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:25:40 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:25:40 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:25:40 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:25:40 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:25:40 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:25:40 [Thread-11] INFO  node.Node - [LogicalClock:24] Received REPLY from Node1
+2025-01-02 20:25:40 [Thread-12] INFO  node.Node - [LogicalClock:25] Received REPLY from Node2
+2025-01-02 20:25:40 [Thread-12] INFO  node.Node - [LogicalClock:25] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:25:40 [Thread-14] INFO  node.Node - [LogicalClock:25] Node Node3 entered critical section.
+2025-01-02 20:25:43 [Thread-14] INFO  node.Node - [LogicalClock:25] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 20:25:43 [Thread-14] INFO  node.Node - [LogicalClock:25] Broadcasted REQUEST message for critical section.
+2025-01-02 20:25:43 [pool-1-thread-4] INFO  node.Node - [LogicalClock:26] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:25:43 [pool-1-thread-2] INFO  node.Node - [LogicalClock:27] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:25:43 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:25:43 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:25:43 [Thread-12] INFO  node.Node - [LogicalClock:27] Sent REPLY to Node2
+2025-01-02 20:25:43 [Thread-12] INFO  node.Node - [LogicalClock:26] Deferred REPLY to Node2
+2025-01-02 20:25:43 [pool-1-thread-2] INFO  node.Node - [LogicalClock:28] Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 20:25:43 [Thread-11] INFO  node.Node - [LogicalClock:28] Received REPLY from Node1
+2025-01-02 20:25:51 [Thread-14] INFO  node.Node - [LogicalClock:29] Sending message REQUEST to all nodes - [Node3, Node2]
+2025-01-02 20:25:51 [Thread-14] INFO  node.Node - [LogicalClock:29] Broadcasted REQUEST message for critical section.
+2025-01-02 20:25:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:30] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:25:51 [pool-1-thread-4] INFO  node.Node - [LogicalClock:31] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:25:51 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:25:51 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:25:51 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:25:51 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:26:09 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:30] Shared variable changed to: пп пп
+2025-01-02 20:26:09 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 20:26:09 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:31] Shared variable updated to: пп пп
+2025-01-02 20:26:09 [pool-1-thread-4] INFO  node.Node - [LogicalClock:32] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:26:09 [pool-1-thread-4] INFO  node.Node - [LogicalClock:33] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 20:26:09 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:26:09 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: пп пп
+2025-01-02 20:26:09 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:26:09 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: пп пп
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:26:15 [Thread-11] INFO  node.Node - [LogicalClock:33] Closed ObjectOutputStream for node Node1
+2025-01-02 20:26:15 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node1 has been killed and disconnected.
+2025-01-02 20:26:15 [Thread-11] INFO  node.Node - [LogicalClock:33] Node Node1 has been removed from connections.
+2025-01-02 20:26:15 [Thread-11] INFO  node.Node - [LogicalClock:33] Connection with node Node1 has been terminated.
+2025-01-02 20:26:15 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node2 has been killed and disconnected.
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:26:15 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:26:15 [Thread-14] INFO  node.Node - [LogicalClock:32] Node Node2 entered critical section.
+2025-01-02 20:27:24 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:32] Shared variable changed to: туц пп
+2025-01-02 20:27:24 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 20:27:24 [pool-1-thread-1] INFO  node.Node - [LogicalClock:34] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:27:24 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Shared variable updated to: туц пп
+2025-01-02 20:27:24 [Thread-12] INFO  node.Node - [LogicalClock:34] Received UPDATE from Node2
+2025-01-02 20:27:24 [Thread-12] INFO  node.Node - [LogicalClock:34] Node Node2 updated shared variable to: туц пп
+2025-01-02 20:27:33 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Sent deferred REPLY to Node1
+2025-01-02 20:27:33 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Node Node2 left critical section.
+2025-01-02 20:27:33 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message REPLY sent to node Node1 with delay 0ms
+2025-01-02 20:27:33 [Thread-12] INFO  node.Node - [LogicalClock:36] Received REPLY from Node2
+2025-01-02 20:27:33 [Thread-12] INFO  node.Node - [LogicalClock:36] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:27:33 [Thread-14] INFO  node.Node - [LogicalClock:36] Node Node1 entered critical section.
+2025-01-02 20:28:04 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 20:28:04 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:37] Sent NODE_ID to /127.0.0.1:52707
+2025-01-02 20:28:04 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:34] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:28:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:36] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:28:04 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:36] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:37] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:38] Sent SYNC_REQUEST to Node3
+2025-01-02 20:28:04 [pool-1-thread-3] INFO  node.Node - [LogicalClock:39] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:39] Received SYNC_REQUEST from Node1
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:40] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:40] Received SYNC_REQUEST from Node3
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:41] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:28:04 [pool-1-thread-3] INFO  node.Node - [LogicalClock:41] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:28:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:42] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:43] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:43] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:43] Received SYNC_RESPONSE from Node1: туц пп
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:43] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:37] Sent NODE_ID to /127.0.0.1:52708
+2025-01-02 20:28:04 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:43] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:28:04 [pool-1-thread-4] INFO  node.Node - [LogicalClock:45] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:37] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:28:04 [Thread-0] INFO  node.Node - [LogicalClock:38] Sent SYNC_REQUEST to Node3
+2025-01-02 20:28:04 [pool-1-thread-4] INFO  node.Node - [LogicalClock:39] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:45] Received SYNC_REQUEST from Node3
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:46] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:28:04 [pool-1-thread-2] INFO  node.Node - [LogicalClock:47] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:28:04 [Thread-16] INFO  node.Node - [LogicalClock:46] Received SYNC_REQUEST from Node2
+2025-01-02 20:28:04 [Thread-16] INFO  node.Node - [LogicalClock:47] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:28:04 [Thread-16] INFO  node.Node - [LogicalClock:48] Received SYNC_RESPONSE from Node2: туц пп
+2025-01-02 20:28:04 [Thread-16] INFO  node.Node - [LogicalClock:48] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 20:28:04 [pool-1-thread-1] INFO  node.Node - [LogicalClock:49] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:48] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 20:28:04 [Thread-15] INFO  node.Node - [LogicalClock:48] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:41:33 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 20:41:33 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 20:41:36 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 20:41:36 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 20:41:38 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 20:41:38 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 20:41:51 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52998
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:41:51 [Thread-12] INFO  node.Node - [LogicalClock:5] Received SYNC_REQUEST from Node2
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 20:41:51 [Thread-12] INFO  node.Node - [LogicalClock:6] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:7] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:7] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 20:41:51 [Thread-12] INFO  node.Node - [LogicalClock:8] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:41:51 [Thread-12] INFO  node.Node - [LogicalClock:8] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:52999
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:41:51 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 20:41:51 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:41:51 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 20:41:51 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 20:41:51 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 20:41:51 [Thread-11] INFO  node.Node - [LogicalClock:13] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 20:41:51 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:41:51 [Thread-13] INFO  node.Node - [LogicalClock:14] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:41:56 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 20:41:56 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:53003
+2025-01-02 20:41:56 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 20:41:56 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 20:41:56 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:41:56 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:41:56 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 20:41:56 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 20:41:56 [pool-1-thread-1] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 20:41:56 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 20:41:56 [Thread-12] INFO  node.Node - [LogicalClock:20] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 20:41:56 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 20:41:56 [Thread-13] INFO  node.Node - [LogicalClock:19] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 20:42:14 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 20:42:14 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 20:42:14 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 20:43:02 [Thread-14] INFO  node.Node - [LogicalClock:21] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 20:43:02 [Thread-14] INFO  node.Node - [LogicalClock:21] Broadcasted REQUEST message for critical section.
+2025-01-02 20:43:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:22] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:43:02 [pool-1-thread-3] INFO  node.Node - [LogicalClock:23] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:43:02 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:43:02 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 20:43:02 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:43:02 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 20:43:02 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:43:02 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 20:43:02 [Thread-11] INFO  node.Node - [LogicalClock:24] Received REPLY from Node1
+2025-01-02 20:43:02 [Thread-12] INFO  node.Node - [LogicalClock:25] Received REPLY from Node2
+2025-01-02 20:43:02 [Thread-12] INFO  node.Node - [LogicalClock:25] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:43:02 [Thread-14] INFO  node.Node - [LogicalClock:25] Node Node3 entered critical section.
+2025-01-02 20:43:06 [Thread-14] INFO  node.Node - [LogicalClock:25] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 20:43:06 [Thread-14] INFO  node.Node - [LogicalClock:25] Broadcasted REQUEST message for critical section.
+2025-01-02 20:43:06 [pool-1-thread-4] INFO  node.Node - [LogicalClock:26] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:43:06 [pool-1-thread-2] INFO  node.Node - [LogicalClock:27] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 20:43:06 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:43:06 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 20:43:06 [Thread-12] INFO  node.Node - [LogicalClock:26] Deferred REPLY to Node2
+2025-01-02 20:43:06 [Thread-12] INFO  node.Node - [LogicalClock:27] Sent REPLY to Node2
+2025-01-02 20:43:06 [pool-1-thread-2] INFO  node.Node - [LogicalClock:28] Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 20:43:06 [Thread-11] INFO  node.Node - [LogicalClock:28] Received REPLY from Node1
+2025-01-02 20:43:10 [Thread-14] INFO  node.Node - [LogicalClock:29] Sending message REQUEST to all nodes - [Node3, Node2]
+2025-01-02 20:43:10 [Thread-14] INFO  node.Node - [LogicalClock:29] Broadcasted REQUEST message for critical section.
+2025-01-02 20:43:10 [pool-1-thread-4] INFO  node.Node - [LogicalClock:30] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 20:43:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:31] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 20:43:10 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:43:10 [Thread-11] INFO  node.Node - [LogicalClock:30] Received REQUEST from Node1
+2025-01-02 20:43:10 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:43:10 [Thread-11] INFO  node.Node - [LogicalClock:30] Deferred REPLY to Node1
+2025-01-02 20:46:54 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:30] Shared variable changed to: пп пп
+2025-01-02 20:46:54 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:31] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 20:46:54 [pool-1-thread-1] INFO  node.Node - [LogicalClock:33] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 20:46:54 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:31] Shared variable updated to: пп пп
+2025-01-02 20:46:54 [pool-1-thread-4] INFO  node.Node - [LogicalClock:32] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:46:54 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:46:54 [Thread-13] INFO  node.Node - [LogicalClock:32] Received UPDATE from Node3
+2025-01-02 20:46:54 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: пп пп
+2025-01-02 20:46:54 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 updated shared variable to: пп пп
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:47:01 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node1 has been killed and disconnected.
+2025-01-02 20:47:01 [Thread-11] INFO  node.Node - [LogicalClock:33] Closed ObjectOutputStream for node Node1
+2025-01-02 20:47:01 [Thread-11] INFO  node.Node - [LogicalClock:33] Node Node1 has been removed from connections.
+2025-01-02 20:47:01 [Thread-11] INFO  node.Node - [LogicalClock:33] Connection with node Node1 has been terminated.
+2025-01-02 20:47:01 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:33] Node Node2 has been killed and disconnected.
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Closed ObjectOutputStream for node Node3
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Node Node3 has been removed from connections.
+2025-01-02 20:47:01 [Thread-13] INFO  node.Node - [LogicalClock:32] Connection with node Node3 has been terminated.
+2025-01-02 20:47:01 [Thread-14] INFO  node.Node - [LogicalClock:32] Node Node2 entered critical section.
+2025-01-02 20:47:34 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:32] Shared variable changed to: ляк лок
+2025-01-02 20:47:34 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 20:47:34 [JettyServerThreadPool-36] INFO  node.Node - [LogicalClock:33] Shared variable updated to: ляк лок
+2025-01-02 20:47:34 [pool-1-thread-1] INFO  node.Node - [LogicalClock:34] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 20:47:34 [Thread-12] INFO  node.Node - [LogicalClock:34] Received UPDATE from Node2
+2025-01-02 20:47:34 [Thread-12] INFO  node.Node - [LogicalClock:34] Node Node2 updated shared variable to: ляк лок
+2025-01-02 20:47:46 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Sent deferred REPLY to Node1
+2025-01-02 20:47:46 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:35] Node Node2 left critical section.
+2025-01-02 20:47:46 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message REPLY sent to node Node1 with delay 0ms
+2025-01-02 20:47:46 [Thread-12] INFO  node.Node - [LogicalClock:36] Received REPLY from Node2
+2025-01-02 20:47:46 [Thread-12] INFO  node.Node - [LogicalClock:36] All REPLY messages received. Notifying waiting thread.
+2025-01-02 20:47:46 [Thread-14] INFO  node.Node - [LogicalClock:36] Node Node1 entered critical section.
+2025-01-02 20:48:09 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:36] Shared variable changed to: нью валуе
+2025-01-02 20:48:09 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:37] Sending message UPDATE to all nodes - [Node2]
+2025-01-02 20:48:09 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:37] Shared variable updated to: нью валуе
+2025-01-02 20:48:09 [pool-1-thread-3] INFO  node.Node - [LogicalClock:38] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 20:48:09 [Thread-11] INFO  node.Node - [LogicalClock:38] Received UPDATE from Node1
+2025-01-02 20:48:09 [Thread-11] INFO  node.Node - [LogicalClock:38] Node Node1 updated shared variable to: нью валуе
+2025-01-02 21:02:10 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:33] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 21:02:10 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:33] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:39] Sent NODE_ID to /127.0.0.1:53423
+2025-01-02 21:02:10 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:34] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:02:10 [pool-1-thread-2] INFO  node.Node - [LogicalClock:36] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:02:10 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:36] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:39] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:40] Sent SYNC_REQUEST to Node3
+2025-01-02 21:02:10 [pool-1-thread-2] INFO  node.Node - [LogicalClock:41] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:42] Received SYNC_REQUEST from Node3
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:43] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:41] Received SYNC_REQUEST from Node1
+2025-01-02 21:02:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:44] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:42] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:02:10 [pool-1-thread-3] INFO  node.Node - [LogicalClock:43] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:44] Received SYNC_RESPONSE from Node1: нью валуе
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:44] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:45] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 21:02:10 [JettyServerThreadPool-32] INFO  node.Node - [LogicalClock:44] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:39] Sent NODE_ID to /127.0.0.1:53424
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:45] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:02:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:46] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:39] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:02:10 [Thread-0] INFO  node.Node - [LogicalClock:40] Sent SYNC_REQUEST to Node3
+2025-01-02 21:02:10 [pool-1-thread-2] INFO  node.Node - [LogicalClock:41] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:02:10 [Thread-16] INFO  node.Node - [LogicalClock:47] Received SYNC_REQUEST from Node2
+2025-01-02 21:02:10 [Thread-16] INFO  node.Node - [LogicalClock:48] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:46] Received SYNC_REQUEST from Node3
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:47] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:02:10 [pool-1-thread-4] INFO  node.Node - [LogicalClock:48] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:02:10 [pool-1-thread-4] INFO  node.Node - [LogicalClock:49] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:02:10 [Thread-16] INFO  node.Node - [LogicalClock:50] Received SYNC_RESPONSE from Node2: нью валуе
+2025-01-02 21:02:10 [Thread-16] INFO  node.Node - [LogicalClock:50] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:49] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 21:02:10 [Thread-15] INFO  node.Node - [LogicalClock:49] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:27:48 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 21:27:49 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 21:27:50 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 21:27:50 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 21:27:52 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 21:27:52 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 21:27:59 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54021
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 21:27:59 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node2
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:27:59 [Thread-12] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:27:59 [Thread-12] INFO  node.Node - [LogicalClock:6] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:27:59 [Thread-12] INFO  node.Node - [LogicalClock:6] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:7] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:7] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54022
+2025-01-02 21:27:59 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:27:59 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 21:27:59 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:27:59 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:27:59 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:27:59 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:27:59 [Thread-13] INFO  node.Node - [LogicalClock:14] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:27:59 [Thread-11] INFO  node.Node - [LogicalClock:13] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:28:02 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:28:02 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:54024
+2025-01-02 21:28:02 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:28:02 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 21:28:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:28:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:28:02 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 21:28:02 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:28:02 [pool-1-thread-1] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:28:02 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:28:02 [Thread-12] INFO  node.Node - [LogicalClock:20] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:28:02 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:28:02 [Thread-13] INFO  node.Node - [LogicalClock:19] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:28:05 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 21:28:05 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:28:05 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 21:28:13 [Thread-14] INFO  node.Node - [LogicalClock:21] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 21:28:13 [Thread-14] INFO  node.Node - [LogicalClock:21] Broadcasted REQUEST message for critical section.
+2025-01-02 21:28:13 [pool-1-thread-2] INFO  node.Node - [LogicalClock:22] Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:28:13 [pool-1-thread-3] INFO  node.Node - [LogicalClock:23] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:28:13 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 21:28:13 [Thread-13] INFO  node.Node - [LogicalClock:22] Received REQUEST from Node3
+2025-01-02 21:28:13 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 21:28:13 [Thread-13] INFO  node.Node - [LogicalClock:23] Sent REPLY to Node3
+2025-01-02 21:28:13 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 21:28:13 [pool-1-thread-2] INFO  node.Node - [LogicalClock:24] Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 21:28:13 [Thread-12] INFO  node.Node - [LogicalClock:24] Received REPLY from Node2
+2025-01-02 21:28:13 [Thread-11] INFO  node.Node - [LogicalClock:25] Received REPLY from Node1
+2025-01-02 21:28:13 [Thread-11] INFO  node.Node - [LogicalClock:25] All REPLY messages received. Notifying waiting thread.
+2025-01-02 21:28:13 [Thread-14] INFO  node.Node - [LogicalClock:25] Node Node3 entered critical section.
+2025-01-02 21:28:16 [Thread-14] INFO  node.Node - [LogicalClock:25] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 21:28:16 [Thread-14] INFO  node.Node - [LogicalClock:25] Broadcasted REQUEST message for critical section.
+2025-01-02 21:28:16 [pool-1-thread-2] INFO  node.Node - [LogicalClock:27] Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:28:16 [pool-1-thread-4] INFO  node.Node - [LogicalClock:26] Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:28:16 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 21:28:16 [Thread-12] INFO  node.Node - [LogicalClock:26] Received REQUEST from Node2
+2025-01-02 21:28:16 [Thread-12] INFO  node.Node - [LogicalClock:27] Sent REPLY to Node2
+2025-01-02 21:28:16 [Thread-12] INFO  node.Node - [LogicalClock:26] Deferred REPLY to Node2
+2025-01-02 21:28:16 [pool-1-thread-3] INFO  node.Node - [LogicalClock:28] Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 21:28:16 [Thread-11] INFO  node.Node - [LogicalClock:28] Received REPLY from Node1
+2025-01-02 21:28:36 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:26] Shared variable changed to: пп пп
+2025-01-02 21:28:36 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:27] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 21:28:36 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:27] Shared variable updated to: пп пп
+2025-01-02 21:28:36 [pool-1-thread-4] INFO  node.Node - [LogicalClock:28] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 21:28:36 [pool-1-thread-1] INFO  node.Node - [LogicalClock:29] Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 21:28:36 [Thread-13] INFO  node.Node - [LogicalClock:29] Received UPDATE from Node3
+2025-01-02 21:28:36 [Thread-13] INFO  node.Node - [LogicalClock:29] Received UPDATE from Node3
+2025-01-02 21:28:36 [Thread-13] INFO  node.Node - [LogicalClock:29] Node Node3 updated shared variable to: пп пп
+2025-01-02 21:28:36 [Thread-13] INFO  node.Node - [LogicalClock:29] Node Node3 updated shared variable to: пп пп
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Closed ObjectOutputStream for node Node3
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Node Node3 has been removed from connections.
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Connection with node Node3 has been terminated.
+2025-01-02 21:28:43 [Thread-11] INFO  node.Node - [LogicalClock:29] Closed ObjectOutputStream for node Node1
+2025-01-02 21:28:43 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:29] Node Node1 has been killed and disconnected.
+2025-01-02 21:28:43 [Thread-11] INFO  node.Node - [LogicalClock:29] Node Node1 has been removed from connections.
+2025-01-02 21:28:43 [Thread-11] INFO  node.Node - [LogicalClock:29] Connection with node Node1 has been terminated.
+2025-01-02 21:28:43 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:29] Node Node2 has been killed and disconnected.
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Closed ObjectOutputStream for node Node3
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Node Node3 has been removed from connections.
+2025-01-02 21:28:43 [Thread-13] INFO  node.Node - [LogicalClock:29] Connection with node Node3 has been terminated.
+2025-01-02 21:28:43 [Thread-14] INFO  node.Node - [LogicalClock:29] Node Node2 entered critical section.
+2025-01-02 21:28:57 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:29] Shared variable changed to: fuck
+2025-01-02 21:28:57 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:30] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 21:28:57 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:30] Shared variable updated to: fuck
+2025-01-02 21:28:57 [pool-1-thread-1] INFO  node.Node - [LogicalClock:31] Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 21:28:57 [Thread-12] INFO  node.Node - [LogicalClock:31] Received UPDATE from Node2
+2025-01-02 21:28:57 [Thread-12] INFO  node.Node - [LogicalClock:31] Node Node2 updated shared variable to: fuck
+2025-01-02 21:29:30 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:31] Node Node2 left critical section.
+2025-01-02 21:29:38 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:29] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 21:29:38 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:29] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:32] Sent NODE_ID to /127.0.0.1:54058
+2025-01-02 21:29:38 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:30] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:29:38 [pool-1-thread-2] INFO  node.Node - [LogicalClock:32] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:29:38 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:32] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:32] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:33] Sent SYNC_REQUEST to Node3
+2025-01-02 21:29:38 [pool-1-thread-4] INFO  node.Node - [LogicalClock:34] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:34] Received SYNC_REQUEST from Node1
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:35] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:32] Sent NODE_ID to /127.0.0.1:54059
+2025-01-02 21:29:38 [Thread-14] INFO  node.Node - [LogicalClock:35] Received SYNC_REQUEST from Node3
+2025-01-02 21:29:38 [pool-1-thread-3] INFO  node.Node - [LogicalClock:36] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:29:38 [Thread-14] INFO  node.Node - [LogicalClock:36] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:29:38 [JettyServerThreadPool-31] INFO  node.Node - [LogicalClock:36] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:29:38 [pool-1-thread-1] INFO  node.Node - [LogicalClock:37] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:29:38 [Thread-14] INFO  node.Node - [LogicalClock:38] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 21:29:38 [Thread-14] INFO  node.Node - [LogicalClock:38] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:29:38 [pool-1-thread-4] INFO  node.Node - [LogicalClock:38] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:32] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:39] Received SYNC_RESPONSE from Node1: fuck
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:39] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:29:38 [Thread-0] INFO  node.Node - [LogicalClock:33] Sent SYNC_REQUEST to Node3
+2025-01-02 21:29:38 [pool-1-thread-3] INFO  node.Node - [LogicalClock:34] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:29:38 [Thread-16] INFO  node.Node - [LogicalClock:40] Received SYNC_REQUEST from Node2
+2025-01-02 21:29:38 [Thread-16] INFO  node.Node - [LogicalClock:41] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:29:38 [pool-1-thread-1] INFO  node.Node - [LogicalClock:42] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:38] Received SYNC_REQUEST from Node3
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:39] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:29:38 [pool-1-thread-4] INFO  node.Node - [LogicalClock:40] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:42] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 21:29:38 [Thread-15] INFO  node.Node - [LogicalClock:42] Node Node3 updated shared variable to: пп пп
+2025-01-02 21:29:38 [Thread-16] INFO  node.Node - [LogicalClock:43] Received SYNC_RESPONSE from Node2: fuck
+2025-01-02 21:29:38 [Thread-16] INFO  node.Node - [LogicalClock:43] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:41:00 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 21:41:01 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 21:41:02 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 21:41:02 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 21:41:04 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 21:41:04 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 21:41:10 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54313
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:41:10 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node2
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_REQUEST from Node1
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:41:10 [Thread-12] INFO  node.Node - [LogicalClock:5] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:7] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:41:10 [Thread-12] INFO  node.Node - [LogicalClock:8] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:41:10 [Thread-12] INFO  node.Node - [LogicalClock:8] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54314
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:41:10 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:41:10 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3] Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:41:10 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 21:41:10 [Thread-13] INFO  node.Node - [LogicalClock:12] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:10] Received SYNC_REQUEST from Node1
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:41:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12] Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:13] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:41:10 [Thread-11] INFO  node.Node - [LogicalClock:13] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:41:10 [Thread-13] INFO  node.Node - [LogicalClock:14] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:41:10 [Thread-13] INFO  node.Node - [LogicalClock:14] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:41:22 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:7] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:7] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:7] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:8] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:41:22 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10] Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:41:22 [Thread-0] INFO  node.Node - [LogicalClock:14] Sent NODE_ID to /127.0.0.1:54318
+2025-01-02 21:41:22 [Thread-0] INFO  node.Node - [LogicalClock:14] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:41:22 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16] Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:41:22 [Thread-0] INFO  node.Node - [LogicalClock:16] Sent SYNC_REQUEST to Node2
+2025-01-02 21:41:22 [Thread-13] INFO  node.Node - [LogicalClock:16] Received SYNC_REQUEST from Node3
+2025-01-02 21:41:22 [Thread-13] INFO  node.Node - [LogicalClock:17] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:41:22 [pool-1-thread-1] INFO  node.Node - [LogicalClock:18] Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:17] Received SYNC_REQUEST from Node2
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:18] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:41:22 [pool-1-thread-1] INFO  node.Node - [LogicalClock:19] Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:41:22 [Thread-12] INFO  node.Node - [LogicalClock:20] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:41:22 [Thread-13] INFO  node.Node - [LogicalClock:19] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:41:22 [Thread-13] INFO  node.Node - [LogicalClock:19] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:41:27 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:20] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 21:41:27 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:41:27 [Thread-13] INFO  node.Node - [LogicalClock:20] Already connected to localhost/127.0.0.1:6002
+2025-01-02 21:57:01 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 21:57:02 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 21:57:04 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 21:57:05 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 21:57:06 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 21:57:06 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 21:57:37 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54687
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:2]:: sendMessage:: Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:2] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:2]:: sendMessage:: Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:57:37 [Thread-12] INFO  node.Node - [LogicalClock:3] Received SYNC_REQUEST from Node2
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:3] Received SYNC_REQUEST from Node1
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3]:: sendMessage:: Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3]:: sendMessage:: Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:57:37 [Thread-12] INFO  node.Node - [LogicalClock:3] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:3] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:4] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:4] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:57:37 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:57:37 [Thread-12] INFO  node.Node - [LogicalClock:4] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:5] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:54688
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:2]:: sendMessage:: Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 21:57:37 [Thread-0] INFO  node.Node - [LogicalClock:2] Sent SYNC_REQUEST to Node1
+2025-01-02 21:57:37 [Thread-13] INFO  node.Node - [LogicalClock:7] Received SYNC_REQUEST from Node3
+2025-01-02 21:57:37 [pool-1-thread-2] INFO  node.Node - [LogicalClock:7]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:57:37 [Thread-13] INFO  node.Node - [LogicalClock:7] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:7] Received SYNC_REQUEST from Node1
+2025-01-02 21:57:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:7]:: sendMessage:: Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:7] Sent SYNC_RESPONSE to Node1
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:8] Received SYNC_RESPONSE from Node1: Test value
+2025-01-02 21:57:37 [Thread-11] INFO  node.Node - [LogicalClock:8] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 21:57:37 [Thread-13] INFO  node.Node - [LogicalClock:8] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:57:37 [Thread-13] INFO  node.Node - [LogicalClock:8] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:57:39 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:4] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:4] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:4] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 21:57:39 [Thread-0] INFO  node.Node - [LogicalClock:9] Sent NODE_ID to /127.0.0.1:54693
+2025-01-02 21:57:39 [Thread-0] INFO  node.Node - [LogicalClock:9] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 21:57:39 [pool-1-thread-1] INFO  node.Node - [LogicalClock:10]:: sendMessage:: Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:5] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 21:57:39 [Thread-0] INFO  node.Node - [LogicalClock:10] Sent SYNC_REQUEST to Node2
+2025-01-02 21:57:39 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node2
+2025-01-02 21:57:39 [Thread-13] INFO  node.Node - [LogicalClock:11] Received SYNC_REQUEST from Node3
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node2
+2025-01-02 21:57:39 [pool-1-thread-2] INFO  node.Node - [LogicalClock:11]:: sendMessage:: Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 21:57:39 [pool-1-thread-2] INFO  node.Node - [LogicalClock:11]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 21:57:39 [Thread-13] INFO  node.Node - [LogicalClock:11] Sent SYNC_RESPONSE to Node3
+2025-01-02 21:57:39 [Thread-13] INFO  node.Node - [LogicalClock:12] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 21:57:39 [Thread-13] INFO  node.Node - [LogicalClock:12] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:12] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 21:57:39 [Thread-12] INFO  node.Node - [LogicalClock:12] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 21:57:45 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:12] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 21:57:45 [Thread-13] INFO  node.Node - [LogicalClock:12] Already connected to localhost/127.0.0.1:6001
+2025-01-02 21:57:45 [Thread-13] INFO  node.Node - [LogicalClock:12] Already connected to localhost/127.0.0.1:6002
+2025-01-02 22:01:17 [Thread-14] INFO  node.Node - [LogicalClock:13] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 22:01:17 [pool-1-thread-3] INFO  node.Node - [LogicalClock:13]:: broadcast:: Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 22:01:17 [pool-1-thread-1] INFO  node.Node - [LogicalClock:13]:: broadcast:: Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:01:17 [Thread-14] INFO  node.Node - [LogicalClock:13] Broadcasted REQUEST message for critical section.
+2025-01-02 22:01:17 [Thread-13] INFO  node.Node - [LogicalClock:14] Received REQUEST from Node3
+2025-01-02 22:01:17 [Thread-13] INFO  node.Node - [LogicalClock:14] Received REQUEST from Node3
+2025-01-02 22:01:17 [Thread-13] INFO  node.Node - [LogicalClock:14] Sent REPLY to Node3
+2025-01-02 22:01:17 [Thread-13] INFO  node.Node - [LogicalClock:14] Sent REPLY to Node3
+2025-01-02 22:01:17 [pool-1-thread-3] INFO  node.Node - [LogicalClock:14]:: sendMessage:: Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 22:01:17 [pool-1-thread-3] INFO  node.Node - [LogicalClock:14]:: sendMessage:: Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 22:01:17 [Thread-12] INFO  node.Node - [LogicalClock:15] Received REPLY from Node2
+2025-01-02 22:01:17 [Thread-11] INFO  node.Node - [LogicalClock:16] Received REPLY from Node1
+2025-01-02 22:01:17 [Thread-11] INFO  node.Node - [LogicalClock:16] All REPLY messages received. Notifying waiting thread.
+2025-01-02 22:01:17 [Thread-14] INFO  node.Node - [LogicalClock:16] Node Node3 entered critical section.
+2025-01-02 22:01:20 [Thread-14] INFO  node.Node - [LogicalClock:15] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 22:01:20 [Thread-14] INFO  node.Node - [LogicalClock:15] Broadcasted REQUEST message for critical section.
+2025-01-02 22:01:20 [pool-1-thread-1] INFO  node.Node - [LogicalClock:15]:: broadcast:: Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:01:20 [pool-1-thread-4] INFO  node.Node - [LogicalClock:15]:: broadcast:: Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:01:20 [Thread-12] INFO  node.Node - [LogicalClock:17] Received REQUEST from Node2
+2025-01-02 22:01:20 [Thread-12] INFO  node.Node - [LogicalClock:16] Received REQUEST from Node2
+2025-01-02 22:01:20 [Thread-12] INFO  node.Node - [LogicalClock:17] Deferred REPLY to Node2
+2025-01-02 22:01:20 [Thread-12] INFO  node.Node - [LogicalClock:16] Sent REPLY to Node2
+2025-01-02 22:01:20 [pool-1-thread-1] INFO  node.Node - [LogicalClock:16]:: sendMessage:: Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 22:01:20 [Thread-11] INFO  node.Node - [LogicalClock:17] Received REPLY from Node1
+2025-01-02 22:01:25 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:17] Shared variable changed to: пп пп
+2025-01-02 22:01:25 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:18] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 22:01:25 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:18] Shared variable updated to: пп пп
+2025-01-02 22:01:25 [pool-1-thread-2] INFO  node.Node - [LogicalClock:18]:: broadcast:: Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 22:01:25 [pool-1-thread-4] INFO  node.Node - [LogicalClock:18]:: broadcast:: Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 22:01:25 [Thread-13] INFO  node.Node - [LogicalClock:19] Received UPDATE from Node3
+2025-01-02 22:01:25 [Thread-13] INFO  node.Node - [LogicalClock:19] Received UPDATE from Node3
+2025-01-02 22:01:25 [Thread-13] INFO  node.Node - [LogicalClock:19] Node Node3 updated shared variable to: пп пп
+2025-01-02 22:01:25 [Thread-13] INFO  node.Node - [LogicalClock:19] Node Node3 updated shared variable to: пп пп
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Closed ObjectOutputStream for node Node3
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Node Node3 has been removed from connections.
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Connection with node Node3 has been terminated.
+2025-01-02 22:01:29 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:18] Node Node1 has been killed and disconnected.
+2025-01-02 22:01:29 [Thread-11] INFO  node.Node - [LogicalClock:18] Closed ObjectOutputStream for node Node1
+2025-01-02 22:01:29 [Thread-11] INFO  node.Node - [LogicalClock:18] Node Node1 has been removed from connections.
+2025-01-02 22:01:29 [Thread-11] INFO  node.Node - [LogicalClock:18] Connection with node Node1 has been terminated.
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Closed ObjectOutputStream for node Node3
+2025-01-02 22:01:29 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:18] Node Node2 has been killed and disconnected.
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Node Node3 has been removed from connections.
+2025-01-02 22:01:29 [Thread-13] INFO  node.Node - [LogicalClock:19] Connection with node Node3 has been terminated.
+2025-01-02 22:01:29 [Thread-14] INFO  node.Node - [LogicalClock:19] Node Node2 entered critical section.
+2025-01-02 22:01:48 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:19] Shared variable changed to: fuck
+2025-01-02 22:01:48 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:20] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 22:01:48 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:20] Shared variable updated to: fuck
+2025-01-02 22:01:48 [pool-1-thread-2] INFO  node.Node - [LogicalClock:20]:: broadcast:: Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 22:01:48 [Thread-12] INFO  node.Node - [LogicalClock:21] Received UPDATE from Node2
+2025-01-02 22:01:48 [Thread-12] INFO  node.Node - [LogicalClock:21] Node Node2 updated shared variable to: fuck
+2025-01-02 22:01:52 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:20] Node Node2 left critical section.
+2025-01-02 22:02:42 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:18] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 22:02:42 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:18] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:22] Sent NODE_ID to /127.0.0.1:54795
+2025-01-02 22:02:42 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:19] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 22:02:42 [pool-1-thread-1] INFO  node.Node - [LogicalClock:20]:: sendMessage:: Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:02:42 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:20] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:22] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:23] Sent SYNC_REQUEST to Node3
+2025-01-02 22:02:42 [pool-1-thread-4] INFO  node.Node - [LogicalClock:23]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:24] Received SYNC_REQUEST from Node1
+2025-01-02 22:02:42 [Thread-14] INFO  node.Node - [LogicalClock:24] Received SYNC_REQUEST from Node3
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:24] Sent SYNC_RESPONSE to Node1
+2025-01-02 22:02:42 [Thread-14] INFO  node.Node - [LogicalClock:24] Sent SYNC_RESPONSE to Node3
+2025-01-02 22:02:42 [pool-1-thread-3] INFO  node.Node - [LogicalClock:24]:: sendMessage:: Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 22:02:42 [pool-1-thread-2] INFO  node.Node - [LogicalClock:24]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 22:02:42 [Thread-14] INFO  node.Node - [LogicalClock:25] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 22:02:42 [Thread-14] INFO  node.Node - [LogicalClock:25] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:26] Received SYNC_RESPONSE from Node1: fuck
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:26] Received outdated SYNC_RESPONSE from Node1. Ignoring.
+2025-01-02 22:02:42 [JettyServerThreadPool-35] INFO  node.Node - [LogicalClock:26] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 22:02:42 [pool-1-thread-2] INFO  node.Node - [LogicalClock:27]:: sendMessage:: Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:21] Sent NODE_ID to /127.0.0.1:54796
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:21] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:02:42 [Thread-0] INFO  node.Node - [LogicalClock:22] Sent SYNC_REQUEST to Node3
+2025-01-02 22:02:42 [pool-1-thread-3] INFO  node.Node - [LogicalClock:22]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:02:42 [Thread-16] INFO  node.Node - [LogicalClock:28] Received SYNC_REQUEST from Node2
+2025-01-02 22:02:42 [Thread-16] INFO  node.Node - [LogicalClock:28] Sent SYNC_RESPONSE to Node2
+2025-01-02 22:02:42 [pool-1-thread-4] INFO  node.Node - [LogicalClock:28]:: sendMessage:: Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:28] Received SYNC_REQUEST from Node3
+2025-01-02 22:02:42 [pool-1-thread-4] INFO  node.Node - [LogicalClock:28]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:28] Sent SYNC_RESPONSE to Node3
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:29] Received SYNC_RESPONSE from Node3: пп пп
+2025-01-02 22:02:42 [Thread-15] INFO  node.Node - [LogicalClock:29] Received outdated SYNC_RESPONSE from Node3. Ignoring.
+2025-01-02 22:02:42 [Thread-16] INFO  node.Node - [LogicalClock:29] Received SYNC_RESPONSE from Node2: fuck
+2025-01-02 22:02:42 [Thread-16] INFO  node.Node - [LogicalClock:29] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 22:18:58 [main] INFO  node.Node - [LogicalClock:0] Node Node1 started on port 6001
+2025-01-02 22:18:58 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7001
+2025-01-02 22:19:00 [main] INFO  node.Node - [LogicalClock:0] Node Node2 started on port 6002
+2025-01-02 22:19:01 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7002
+2025-01-02 22:19:03 [main] INFO  node.Node - [LogicalClock:0] Node Node3 started on port 6003
+2025-01-02 22:19:04 [main] INFO  node.Node - [LogicalClock:0] Javalin server started on port 7003
+2025-01-02 22:19:10 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:0] Join initiated for nodes: [localhost:6002, localhost:6003]
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:0] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 22:19:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:55141
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:1] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 22:19:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:2]:: sendMessage:: Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:2] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 22:19:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:3] Received SYNC_REQUEST from Node1
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:3] Sent SYNC_RESPONSE to Node1
+2025-01-02 22:19:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:3]:: sendMessage:: Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 22:19:10 [Thread-12] INFO  node.Node - [LogicalClock:4] Received SYNC_RESPONSE from Node2: Test value
+2025-01-02 22:19:10 [Thread-12] INFO  node.Node - [LogicalClock:4] Received outdated SYNC_RESPONSE from Node2. Ignoring.
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:4] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:19:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Sent NODE_ID to /127.0.0.1:55142
+2025-01-02 22:19:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:5]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:19:10 [Thread-0] INFO  node.Node - [LogicalClock:1] Received NODE_ID from Node1 at localhost/127.0.0.1:6001
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:6] Received SYNC_REQUEST from Node1
+2025-01-02 22:19:10 [Thread-11] INFO  node.Node - [LogicalClock:6] Sent SYNC_RESPONSE to Node1
+2025-01-02 22:19:10 [pool-1-thread-1] INFO  node.Node - [LogicalClock:6]:: sendMessage:: Message SYNC_RESPONSE sent to node Node1 with delay 0ms
+2025-01-02 22:19:10 [Thread-13] INFO  node.Node - [LogicalClock:7] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 22:19:10 [Thread-13] INFO  node.Node - [LogicalClock:7] Node Node3 synced shared variable to: Test value
+2025-01-02 22:19:37 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:3] Join initiated for nodes: [localhost:6001, localhost:6003]
+2025-01-02 22:19:37 [Thread-12] INFO  node.Node - [LogicalClock:3] Already connected to localhost/127.0.0.1:6001
+2025-01-02 22:19:37 [Thread-12] INFO  node.Node - [LogicalClock:3] Attempting to connect to localhost/127.0.0.1:6003
+2025-01-02 22:19:37 [Thread-0] INFO  node.Node - [LogicalClock:7] Sent NODE_ID to /127.0.0.1:55154
+2025-01-02 22:19:37 [Thread-12] INFO  node.Node - [LogicalClock:4] Successfully connected to Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:19:37 [Thread-0] INFO  node.Node - [LogicalClock:7] Received NODE_ID from Node2 at localhost/127.0.0.1:6002
+2025-01-02 22:19:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:5]:: sendMessage:: Message SYNC_REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:19:37 [Thread-12] INFO  node.Node - [LogicalClock:8] Received SYNC_REQUEST from Node2
+2025-01-02 22:19:37 [pool-1-thread-1] INFO  node.Node - [LogicalClock:8]:: sendMessage:: Message SYNC_RESPONSE sent to node Node2 with delay 0ms
+2025-01-02 22:19:37 [Thread-12] INFO  node.Node - [LogicalClock:8] Sent SYNC_RESPONSE to Node2
+2025-01-02 22:19:37 [Thread-13] INFO  node.Node - [LogicalClock:9] Received SYNC_RESPONSE from Node3: Test value
+2025-01-02 22:19:37 [Thread-13] INFO  node.Node - [LogicalClock:9] Node Node3 synced shared variable to: Test value
+2025-01-02 22:19:41 [JettyServerThreadPool-37] INFO  node.Node - [LogicalClock:8] Join initiated for nodes: [localhost:6001, localhost:6002]
+2025-01-02 22:19:41 [Thread-13] INFO  node.Node - [LogicalClock:8] Already connected to localhost/127.0.0.1:6001
+2025-01-02 22:19:41 [Thread-13] INFO  node.Node - [LogicalClock:8] Already connected to localhost/127.0.0.1:6002
+2025-01-02 22:28:02 [Thread-14] INFO  node.Node - [LogicalClock:9] Sending message REQUEST to all nodes - [Node1, Node2]
+2025-01-02 22:28:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:9]:: broadcast:: Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:28:02 [pool-1-thread-3] INFO  node.Node - [LogicalClock:9]:: broadcast:: Message REQUEST sent to node Node2 with delay 0ms
+2025-01-02 22:28:02 [Thread-14] INFO  node.Node - [LogicalClock:9] Broadcasted REQUEST message for critical section.
+2025-01-02 22:28:02 [Thread-13] INFO  node.Node - [LogicalClock:10] Received REQUEST from Node3
+2025-01-02 22:28:02 [Thread-13] INFO  node.Node - [LogicalClock:10] Received REQUEST from Node3
+2025-01-02 22:28:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10]:: sendMessage:: Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 22:28:02 [pool-1-thread-2] INFO  node.Node - [LogicalClock:10]:: sendMessage:: Message REPLY sent to node Node3 with delay 0ms
+2025-01-02 22:28:02 [Thread-13] INFO  node.Node - [LogicalClock:10] Sent REPLY to Node3
+2025-01-02 22:28:02 [Thread-11] INFO  node.Node - [LogicalClock:11] Received REPLY from Node1
+2025-01-02 22:28:02 [Thread-13] INFO  node.Node - [LogicalClock:10] Sent REPLY to Node3
+2025-01-02 22:28:02 [Thread-12] INFO  node.Node - [LogicalClock:12] Received REPLY from Node2
+2025-01-02 22:28:02 [Thread-12] INFO  node.Node - [LogicalClock:12] All REPLY messages received. Notifying waiting thread.
+2025-01-02 22:28:02 [Thread-14] INFO  node.Node - [LogicalClock:12] Node Node3 entered critical section.
+2025-01-02 22:28:07 [Thread-14] INFO  node.Node - [LogicalClock:11] Sending message REQUEST to all nodes - [Node1, Node3]
+2025-01-02 22:28:07 [pool-1-thread-1] INFO  node.Node - [LogicalClock:11]:: broadcast:: Message REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:28:07 [Thread-14] INFO  node.Node - [LogicalClock:11] Broadcasted REQUEST message for critical section.
+2025-01-02 22:28:07 [pool-1-thread-1] INFO  node.Node - [LogicalClock:11]:: broadcast:: Message REQUEST sent to node Node3 with delay 0ms
+2025-01-02 22:28:07 [Thread-12] INFO  node.Node - [LogicalClock:13] Received REQUEST from Node2
+2025-01-02 22:28:07 [Thread-12] INFO  node.Node - [LogicalClock:12] Received REQUEST from Node2
+2025-01-02 22:28:07 [Thread-12] INFO  node.Node - [LogicalClock:13] Deferred REPLY to Node2
+2025-01-02 22:28:07 [pool-1-thread-1] INFO  node.Node - [LogicalClock:12]:: sendMessage:: Message REPLY sent to node Node2 with delay 0ms
+2025-01-02 22:28:07 [Thread-12] INFO  node.Node - [LogicalClock:12] Sent REPLY to Node2
+2025-01-02 22:28:07 [Thread-11] INFO  node.Node - [LogicalClock:13] Received REPLY from Node1
+2025-01-02 22:28:13 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:13] Shared variable changed to: пп пп
+2025-01-02 22:28:13 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:14] Sending message UPDATE to all nodes - [Node1, Node2]
+2025-01-02 22:28:13 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:14] Shared variable updated to: пп пп
+2025-01-02 22:28:13 [pool-1-thread-1] INFO  node.Node - [LogicalClock:14]:: broadcast:: Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 22:28:13 [pool-1-thread-3] INFO  node.Node - [LogicalClock:14]:: broadcast:: Message UPDATE sent to node Node2 with delay 0ms
+2025-01-02 22:28:13 [Thread-13] INFO  node.Node - [LogicalClock:15] Received UPDATE from Node3
+2025-01-02 22:28:13 [Thread-13] INFO  node.Node - [LogicalClock:15] Node Node3 updated shared variable to: пп пп
+2025-01-02 22:28:13 [Thread-13] INFO  node.Node - [LogicalClock:15] Received UPDATE from Node3
+2025-01-02 22:28:13 [Thread-13] INFO  node.Node - [LogicalClock:15] Node Node3 updated shared variable to: пп пп
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Closed ObjectOutputStream for node Node3
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Node Node3 has been removed from connections.
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Connection with node Node3 has been terminated.
+2025-01-02 22:28:16 [Thread-11] INFO  node.Node - [LogicalClock:14] Closed ObjectOutputStream for node Node1
+2025-01-02 22:28:16 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:14] Node Node1 has been killed and disconnected.
+2025-01-02 22:28:16 [Thread-11] INFO  node.Node - [LogicalClock:14] Node Node1 has been removed from connections.
+2025-01-02 22:28:16 [Thread-11] INFO  node.Node - [LogicalClock:14] Connection with node Node1 has been terminated.
+2025-01-02 22:28:16 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:14] Node Node2 has been killed and disconnected.
+2025-01-02 22:28:16 [Thread-12] INFO  node.Node - [LogicalClock:14] Closed ObjectOutputStream for node Node2
+2025-01-02 22:28:16 [Thread-12] INFO  node.Node - [LogicalClock:14] Node Node2 has been removed from connections.
+2025-01-02 22:28:16 [Thread-12] INFO  node.Node - [LogicalClock:14] Connection with node Node2 has been terminated.
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Closed ObjectOutputStream for node Node3
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Removed address localhost/127.0.0.1:6003 for node Node3
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Node Node3 has been removed from connections.
+2025-01-02 22:28:16 [Thread-13] INFO  node.Node - [LogicalClock:15] Connection with node Node3 has been terminated.
+2025-01-02 22:28:16 [Thread-14] INFO  node.Node - [LogicalClock:15] Node Node2 entered critical section.
+2025-01-02 22:28:23 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:15] Shared variable changed to: fuck
+2025-01-02 22:28:23 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:16] Sending message UPDATE to all nodes - [Node1]
+2025-01-02 22:28:23 [JettyServerThreadPool-33] INFO  node.Node - [LogicalClock:16] Shared variable updated to: fuck
+2025-01-02 22:28:23 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16]:: broadcast:: Message UPDATE sent to node Node1 with delay 0ms
+2025-01-02 22:28:23 [Thread-12] INFO  node.Node - [LogicalClock:17] Received UPDATE from Node2
+2025-01-02 22:28:23 [Thread-12] INFO  node.Node - [LogicalClock:17] Node Node2 updated shared variable to: fuck
+2025-01-02 22:28:47 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:16] Node Node2 left critical section.
+2025-01-02 22:29:36 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:14] Node Node3 is being revived. Reconnecting to known nodes.
+2025-01-02 22:29:36 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:14] Attempting to connect to localhost/127.0.0.1:6001
+2025-01-02 22:29:36 [Thread-0] INFO  node.Node - [LogicalClock:18] Sent NODE_ID to /127.0.0.1:55360
+2025-01-02 22:29:36 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:15] Successfully connected to Node1 at localhost/127.0.0.1:6001
+2025-01-02 22:29:36 [pool-1-thread-2] INFO  node.Node - [LogicalClock:16]:: sendMessage:: Message SYNC_REQUEST sent to node Node1 with delay 0ms
+2025-01-02 22:29:36 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:16] Attempting to connect to localhost/127.0.0.1:6002
+2025-01-02 22:29:36 [Thread-0] INFO  node.Node - [LogicalClock:18] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:29:36 [Thread-14] INFO  node.Node - [LogicalClock:19] Received SYNC_REQUEST from Node3
+2025-01-02 22:29:36 [Thread-14] INFO  node.Node - [LogicalClock:19] Sent SYNC_RESPONSE to Node3
+2025-01-02 22:29:36 [pool-1-thread-2] INFO  node.Node - [LogicalClock:19]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 22:29:36 [Thread-15] INFO  node.Node - [LogicalClock:20] Received SYNC_RESPONSE from Node1: fuck
+2025-01-02 22:29:36 [Thread-0] INFO  node.Node - [LogicalClock:17] Sent NODE_ID to /127.0.0.1:55361
+2025-01-02 22:29:36 [Thread-15] INFO  node.Node - [LogicalClock:20] Node Node1 synced shared variable to: fuck
+2025-01-02 22:29:36 [JettyServerThreadPool-30] INFO  node.Node - [LogicalClock:20] Successfully connected to Node2 at localhost/127.0.0.1:6002
+2025-01-02 22:29:36 [pool-1-thread-4] INFO  node.Node - [LogicalClock:21]:: sendMessage:: Message SYNC_REQUEST sent to node Node2 with delay 0ms
+2025-01-02 22:29:36 [Thread-0] INFO  node.Node - [LogicalClock:17] Received NODE_ID from Node3 at localhost/127.0.0.1:6003
+2025-01-02 22:29:36 [Thread-15] INFO  node.Node - [LogicalClock:22] Received SYNC_REQUEST from Node3
+2025-01-02 22:29:36 [Thread-15] INFO  node.Node - [LogicalClock:22] Sent SYNC_RESPONSE to Node3
+2025-01-02 22:29:36 [pool-1-thread-4] INFO  node.Node - [LogicalClock:22]:: sendMessage:: Message SYNC_RESPONSE sent to node Node3 with delay 0ms
+2025-01-02 22:29:36 [Thread-16] INFO  node.Node - [LogicalClock:23] Received SYNC_RESPONSE from Node2: fuck
+2025-01-02 22:29:36 [Thread-16] INFO  node.Node - [LogicalClock:23] Node Node2 synced shared variable to: fuck

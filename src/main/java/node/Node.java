@@ -3,6 +3,8 @@ package node;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 import message.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,9 +21,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Node {
+    private static final Logger logger = LoggerFactory.getLogger(Node.class);
+
     private final String nodeId;
     private final int port;
-    private final List<InetSocketAddress> initialOtherNodesAddresses; // Изначальные узлы для подключения
+    private final List<InetSocketAddress> initialOtherNodesAddresses; // Initial nodes for connection
     private ServerSocket serverSocket;
     private volatile int logicalClock;
     private final Set<String> repliedNodes;
@@ -30,7 +34,7 @@ public class Node {
     private volatile boolean inCS;
     private volatile String sharedVariable;
 
-    // Сохранение соединений с другими узлами: nodeId -> ObjectOutputStream
+    // Maintaining connections with other nodes: nodeId -> ObjectOutputStream
     private final ConcurrentHashMap<String, ObjectOutputStream> outputStreams = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, Boolean> deferredReplies = new ConcurrentHashMap<>();
 
@@ -38,13 +42,13 @@ public class Node {
 
     private Javalin app;
 
-    private volatile boolean alive; // Флаг активности узла
+    private volatile boolean alive; // Node activity flag
 
-    // Для отслеживания известных узлов для восстановления соединений
+    // Tracking known nodes for connection restoration
     private final List<InetSocketAddress> knownNodesAddresses;
     private final ConcurrentHashMap<String, InetSocketAddress> nodeIdToAddressMap = new ConcurrentHashMap<>();
 
-    private volatile int sendDelayMs = 0; // Задержка в мс
+    private volatile int sendDelayMs = 0; // Delay in ms
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(4);
 
@@ -63,29 +67,29 @@ public class Node {
     }
 
     public void start() throws IOException {
-        // Запуск серверного сокета для приема соединений от других узлов
+        // Start the server socket to accept connections from other nodes
         serverSocket = new ServerSocket(port);
-        System.out.println("Node " + nodeId + " started on port " + port);
+        logger.info("[LogicalClock:{}] Node {} started on port {}", logicalClock, nodeId, port);
 
-        // Запуск потока для обработки входящих соединений
+        // Start thread to handle incoming connections
         new Thread(new ServerHandler()).start();
 
-        // Запуск потока для подключения к изначальным узлам
+        // Start thread to connect to initial nodes
         new Thread(this::connectToInitialOtherNodes).start();
 
-        // Инициализация и настройка Javalin
+        // Initialize and configure Javalin
         setupJavalin();
     }
 
     private void setupJavalin() {
         app = Javalin.create(config -> {
-            // Нет необходимости устанавливать defaultContentType здесь
-        }).start(port + 1000); // Используем порт + 1000 для Javalin, чтобы избежать конфликтов
+            // No need to set defaultContentType here
+        }).start(port + 1000); // Use port + 1000 for Javalin to avoid conflicts
 
-        // Установка типа контента для всех запросов
+        // Set content type for all requests
         app.before(ctx -> ctx.contentType("application/json"));
 
-        // Определение REST-эндпоинтов
+        // Define REST endpoints
         app.get("/read", this::handleRead);
         app.post("/write", this::handleWrite);
         app.post("/request", this::handleRequestCS);
@@ -94,20 +98,20 @@ public class Node {
         app.post("/leave", this::handleLeave);
         app.post("/kill", this::handleKill);
         app.post("/revive", this::handleRevive);
-        app.post("/delay", this::handleSetDelay); // Новый эндпоинт
-        app.get("/delay", this::handleGetDelay);    // Новый эндпоинт (опционально)
+        app.post("/delay", this::handleSetDelay); // New endpoint
+        app.get("/delay", this::handleGetDelay);    // New endpoint (optional)
         app.get("/status", this::handleStatus);
         app.post("/shutdown", this::handleShutdown);
 
-        System.out.println("Javalin server started on port " + (port + 1000));
+        logger.info("[LogicalClock:{}] Javalin server started on port {}", logicalClock, port + 1000);
     }
 
-    // Эндпоинт для чтения общей переменной
+    // Endpoint to read the shared variable
     private void handleRead(Context ctx) {
         ctx.json(Collections.singletonMap("sharedVariable", sharedVariable));
     }
 
-    // Эндпоинт для записи в общую переменную
+    // Endpoint to write to the shared variable
     private void handleWrite(Context ctx) {
         Map<String, String> body;
         try {
@@ -124,25 +128,27 @@ public class Node {
         }
         boolean success = writeSharedVariable(value);
         if (success) {
+            logger.info("[LogicalClock:{}] Shared variable updated to: {}", logicalClock, value);
             ctx.json(Collections.singletonMap("status", "Shared variable updated."));
         } else {
+            logger.warn("[LogicalClock:{}] Attempted to write shared variable without being in critical section.", logicalClock);
             ctx.status(403).json(Collections.singletonMap("error", "Node is not in critical section."));
         }
     }
 
-    // Эндпоинт для запроса входа в критическую секцию
+    // Endpoint to request entry into the critical section
     private void handleRequestCS(Context ctx) {
         new Thread(this::requestCriticalSection).start();
         ctx.json(Collections.singletonMap("status", "Critical section requested."));
     }
 
-    // Эндпоинт для выхода из критической секции
+    // Endpoint to release the critical section
     private void handleReleaseCS(Context ctx) {
         releaseCriticalSection();
         ctx.json(Collections.singletonMap("status", "Critical section released."));
     }
 
-    // Эндпоинт для подключения к новым узлам
+    // Endpoint to join new nodes
     private void handleJoin(Context ctx) {
         List<String> nodesToJoin;
         try {
@@ -169,20 +175,21 @@ public class Node {
             }
             InetSocketAddress address = new InetSocketAddress(host, port);
             newNodes.add(address);
-            knownNodesAddresses.add(address); // Добавляем в список известных узлов для восстановления
+            knownNodesAddresses.add(address); // Add to known nodes list for restoration
         }
         new Thread(() -> connectToNodes(newNodes)).start();
+        logger.info("[LogicalClock:{}] Join initiated for nodes: {}", logicalClock, nodesToJoin);
         ctx.json(Collections.singletonMap("status", "Join initiated for nodes: " + nodesToJoin));
     }
 
-    // Эндпоинт для корректного отключения от узлов
+    // Endpoint to gracefully leave all nodes
     private void handleLeave(Context ctx) {
-        // Если текущий узел находится в критической секции, освобождаем её
+        // If the current node is in the critical section, release it
         if (inCS) {
             releaseCriticalSection();
         }
 
-        // Получаем копию всех подключённых узлов для безопасной итерации
+        // Get a copy of all connected nodes for safe iteration
         Set<String> nodesToLeave = new HashSet<>(outputStreams.keySet());
 
         List<String> successfullyLeft = new ArrayList<>();
@@ -190,30 +197,30 @@ public class Node {
 
         for (String nodeIdToLeave : nodesToLeave) {
             if (outputStreams.containsKey(nodeIdToLeave)) {
-                // Создаём сообщение LEAVE
+                // Create a LEAVE message
                 Message leaveMsg = new Message(Message.MessageType.LEAVE, getAndIncrementLogicalClock(), this.nodeId);
                 sendMessage(nodeIdToLeave, leaveMsg);
 
-                // Закрываем соединение и удаляем узел из структур данных
+                // Close the connection and remove the node from data structures
                 try {
                     ObjectOutputStream out = outputStreams.get(nodeIdToLeave);
                     if (out != null) {
-                        out.close(); // Закрываем поток
+                        out.close(); // Close the stream
                     }
-                    removeNode(nodeIdToLeave); // Удаляем узел из всех структур данных
+                    removeNode(nodeIdToLeave); // Remove the node from all data structures
                     successfullyLeft.add(nodeIdToLeave);
-                    System.out.println("Successfully left node " + nodeIdToLeave);
+                    logger.info("[LogicalClock:{}] Successfully left node {}", logicalClock, nodeIdToLeave);
                 } catch (IOException e) {
                     failedToLeave.add(nodeIdToLeave);
-                    System.out.println("Failed to leave node " + nodeIdToLeave);
-                    e.printStackTrace();
+                    logger.error("[LogicalClock:{}] Failed to leave node {}", logicalClock, nodeIdToLeave, e);
                 }
             } else {
                 failedToLeave.add(nodeIdToLeave);
-                System.out.println("Node " + nodeIdToLeave + " is not connected.");
+                logger.warn("[LogicalClock:{}] Node {} is not connected.", logicalClock, nodeIdToLeave);
             }
         }
 
+        // Send a response to the client with the results of the operation
         ctx.json(Map.of(
                 "status", "Leave operation completed.",
                 "successfullyLeft", successfullyLeft,
@@ -221,28 +228,29 @@ public class Node {
         ));
     }
 
-    // Эндпоинт для некорректного отключения (симуляция отказа узла)
+    // Endpoint to simulate an unexpected node failure (kill)
     private void handleKill(Context ctx) {
         if (!alive) {
             ctx.status(400).json(Collections.singletonMap("error", "Node is already killed."));
             return;
         }
         alive = false;
-        // Закрываем все соединения без отправки сообщений LEAVE
+        // Close all connections without sending LEAVE messages
         for (String nodeId : new ArrayList<>(outputStreams.keySet())) {
             try {
                 ObjectOutputStream out = outputStreams.get(nodeId);
                 if (out != null) {
                     out.close();
                 }
-                // Удаляем адрес из connectedAddresses и nodeIdToAddressMap
+                // Remove the node from connectedAddresses and nodeIdToAddressMap
                 InetSocketAddress address = findAddressByNodeId(nodeId);
                 if (address != null) {
                     connectedAddresses.remove(address);
                     nodeIdToAddressMap.remove(nodeId);
                 }
+                logger.info("[LogicalClock:{}] Node {} has been killed and disconnected.", logicalClock, nodeId);
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("[LogicalClock:{}] Error killing node {}", logicalClock, nodeId, e);
             }
         }
         outputStreams.clear();
@@ -251,7 +259,7 @@ public class Node {
         ctx.json(Collections.singletonMap("status", "Node has been killed. All connections closed."));
     }
 
-    // Эндпоинт для восстановления коммуникации после kill
+    // Endpoint to revive the node after a kill
     private void handleRevive(Context ctx) {
         if (alive) {
             ctx.status(400).json(Collections.singletonMap("error", "Node is already alive."));
@@ -260,16 +268,16 @@ public class Node {
         alive = true;
         inCS = false;
         requestingCS = false;
-        System.out.println("Node " + nodeId + " is being revived. Reconnecting to known nodes.");
+        logger.info("[LogicalClock:{}] Node {} is being revived. Reconnecting to known nodes.", logicalClock, nodeId);
 
-        // Очистка connectedAddresses перед попыткой подключения
+        // Clear connectedAddresses before attempting to connect
         connectedAddresses.clear();
         connectToNodes(knownNodesAddresses);
 
         ctx.json(Collections.singletonMap("status", "Node has been revived. Reconnecting to known nodes."));
     }
 
-    // Эндпоинт для установки задержки в отправке сообщений
+    // Endpoint to set the message sending delay
     private void handleSetDelay(Context ctx) {
         Map<String, Integer> body;
         try {
@@ -286,15 +294,16 @@ public class Node {
         }
 
         setSendDelay(delay);
+        logger.info("[LogicalClock:{}] Send delay set to {}ms.", logicalClock, delay);
         ctx.json(Collections.singletonMap("status", "Send delay set to " + delay + "ms."));
     }
 
-    // Эндпоинт для получения текущей задержки
+    // Endpoint to get the current message sending delay
     private void handleGetDelay(Context ctx) {
         ctx.json(Collections.singletonMap("delay", sendDelayMs));
     }
 
-    // Эндпоинт для получения статуса узла
+    // Endpoint to get the status of the node
     private void handleStatus(Context ctx) {
         Map<String, Object> status = new HashMap<>();
         status.put("nodeId", nodeId);
@@ -310,9 +319,9 @@ public class Node {
         ctx.json(status);
     }
 
-    // Эндпоинт для корректного завершения работы узла
+    // Endpoint to gracefully shut down the node
     private void handleShutdown(Context ctx) {
-        System.out.println("Shutting down node...");
+        logger.info("[LogicalClock:{}] Shutting down node {}...", logicalClock, nodeId);
         app.stop();
         scheduler.shutdown();
         try {
@@ -321,77 +330,78 @@ public class Node {
             }
             serverSocket.close();
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            logger.error("[LogicalClock:{}] Error during shutdown of node {}", logicalClock, nodeId, e);
         }
         System.exit(0);
     }
 
-    // Метод для подключения к изначальным узлам
+    // Method to connect to the initial nodes
     private void connectToInitialOtherNodes() {
         connectToNodes(initialOtherNodesAddresses);
     }
 
-    // Метод для подключения к списку узлов
+    // Method to connect to a list of nodes
     private void connectToNodes(List<InetSocketAddress> nodes) {
         for (InetSocketAddress address : nodes) {
             if (connectedAddresses.contains(address)) {
-                System.out.println("Already connected to " + address);
-                continue; // Уже подключены
+                logger.info("[LogicalClock:{}] Already connected to {}", logicalClock, address);
+                continue; // Already connected
             }
             try {
-                System.out.println("Attempting to connect to " + address);
+                logger.info("[LogicalClock:{}] Attempting to connect to {}", logicalClock, address);
                 Socket socket = new Socket();
                 socket.connect(address, 2000);
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-                // Отправляем сообщение NODE_ID
-                out.writeObject(new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId, port));
+                // Send NODE_ID message
+                Message nodeIdMsg = new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId, port);
+                out.writeObject(nodeIdMsg);
                 out.flush();
 
-                // Читаем сообщение NODE_ID от удаленного узла
+                // Read NODE_ID message from the remote node
                 Message idMessage = (Message) in.readObject();
                 if (idMessage.getType() == Message.MessageType.NODE_ID) {
                     String remoteNodeId = idMessage.getSenderId();
                     synchronized (this) {
                         outputStreams.put(remoteNodeId, out);
-                        nodeIdToAddressMap.put(remoteNodeId, address); // Добавляем в map
+                        nodeIdToAddressMap.put(remoteNodeId, address); // Add to map
                     }
                     connectedAddresses.add(address);
-                    System.out.println("Successfully connected to " + remoteNodeId + " at " + address);
+                    logger.info("[LogicalClock:{}] Successfully connected to {} at {}", logicalClock, remoteNodeId, address);
 
-                    // Отправляем SYNC_REQUEST
+                    // Send SYNC_REQUEST
                     Message syncRequest = new Message(Message.MessageType.SYNC_REQUEST, getAndIncrementLogicalClock(), nodeId);
                     sendMessage(remoteNodeId, syncRequest);
 
-                    // Запускаем обработчик клиента
+                    // Start client handler
                     new Thread(new ClientHandler(socket, in, out)).start();
                 } else {
-                    System.out.println("Unexpected message type during handshake from " + address);
+                    logger.warn("[LogicalClock:{}] Unexpected message type during handshake from {}", logicalClock, address);
                     socket.close();
                 }
             } catch (IOException | ClassNotFoundException e) {
-                System.out.println("Unable to connect to " + address + ". Error: " + e.getMessage());
-                // Можно добавить логику повторных попыток подключения
+                logger.error("[LogicalClock:{}] Unable to connect to {}. Error: {}", logicalClock, address, e.getMessage());
+                // Optionally add retry logic here
             }
         }
     }
 
-    // Метод для записи в общую переменную
+    // Method to write to the shared variable
     private synchronized boolean writeSharedVariable(String value) {
         if (!inCS) {
-            System.out.println("You should enter critical section before changing variable.");
+            logger.warn("[LogicalClock:{}] Attempted to change shared variable without entering critical section.", logicalClock);
             return false;
         }
         sharedVariable = value;
-        System.out.println("Shared variable changed to: " + sharedVariable);
+        logger.info("[LogicalClock:{}] Shared variable changed to: {}", logicalClock, sharedVariable);
 
         Message updateMsg = new Message(Message.MessageType.UPDATE, getAndIncrementLogicalClock(), nodeId, value);
         broadcast(updateMsg);
         return true;
     }
 
-    // Метод для запроса входа в критическую секцию
+    // Method to request entry into the critical section
     public synchronized void requestCriticalSection() {
         requestingCS = true;
         Request request = new Request(getAndIncrementLogicalClock(), nodeId);
@@ -400,25 +410,26 @@ public class Node {
 
         Message msg = new Message(Message.MessageType.REQUEST, logicalClock, nodeId);
         broadcast(msg);
+        logger.info("[LogicalClock:{}] Broadcasted REQUEST message for critical section.", logicalClock);
 
-        // Ожидание ответов от всех других узлов
+        // Wait for replies from all other nodes
         while (repliedNodes.size() < outputStreams.size()) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("[LogicalClock:{}] Interrupted while waiting for REPLY messages.", logicalClock, e);
             }
         }
 
-        // Вход в критическую секцию
+        // Enter the critical section
         inCS = true;
-        System.out.println("Node " + nodeId + " entered critical section.");
+        logger.info("[LogicalClock:{}] Node {} entered critical section.", logicalClock, nodeId);
     }
 
-    // Метод для выхода из критической секции
+    // Method to release the critical section
     public synchronized void releaseCriticalSection() {
         if (!inCS) {
-            System.out.println("Node " + nodeId + " is not in critical section.");
+            logger.warn("[LogicalClock:{}] Node {} is not in critical section.", logicalClock, nodeId);
             return;
         }
 
@@ -431,73 +442,74 @@ public class Node {
                 Message reply = new Message(Message.MessageType.REPLY, getAndIncrementLogicalClock(), nodeId);
                 sendMessage(entry.getKey(), reply);
                 deferredReplies.put(entry.getKey(), false);
+                logger.info("[LogicalClock:{}] Sent deferred REPLY to {}", logicalClock, entry.getKey());
             }
         }
 
         notifyAll();
-        System.out.println("Node " + nodeId + " left critical section.");
+        logger.info("[LogicalClock:{}] Node {} left critical section.", logicalClock, nodeId);
     }
 
-    // Метод для чтения общей переменной (в консоли)
+    // Method to read the shared variable (logged)
     public synchronized void readSharedVariable() {
-        System.out.println("Current value of shared variable: " + sharedVariable);
+        logger.info("[LogicalClock:{}] Current value of shared variable: {}", logicalClock, sharedVariable);
     }
 
-    // Метод для отправки сообщения всем узлам
+    // Method to broadcast a message to all nodes
     private void broadcast(Message msg) {
         if (!alive) {
-            System.out.println("Node is killed. Cannot send messages.");
+            logger.warn("[LogicalClock:{}]:: broadcast:: Node {} is killed. Cannot send messages.", logicalClock, nodeId);
             return;
         }
-        System.out.println("Sending message " + msg.getType() + " to all nodes - " + outputStreams.keySet());
+        // Increment logicalClock before sending the message
+        logger.info("[LogicalClock:{}] Sending message {} to all nodes - {}", logicalClock, msg.getType(), outputStreams.keySet());
         for (Map.Entry<String, ObjectOutputStream> entry : outputStreams.entrySet()) {
             String receiverId = entry.getKey();
             ObjectOutputStream out = entry.getValue();
             scheduler.schedule(() -> {
                 try {
+                    logger.info("[LogicalClock:{}]:: broadcast:: Message {} sent to node {} with delay {}ms", logicalClock, msg.getType(), receiverId, sendDelayMs);
                     out.writeObject(msg);
                     out.flush();
-                    System.out.println("Message " + msg.getType() + " sent to node " + receiverId + " with delay " + sendDelayMs + "ms");
                 } catch (IOException e) {
-                    System.out.println("Error during message sending to " + receiverId);
-                    e.printStackTrace();
+                    logger.error("[LogicalClock:{}] Error during message sending to {}", logicalClock, receiverId, e);
                 }
             }, sendDelayMs, TimeUnit.MILLISECONDS);
         }
     }
 
-    // Метод для отправки сообщения конкретному узлу
+    // Method to send a message to a specific node
     private void sendMessage(String receiverId, Message msg) {
         if (!alive) {
-            System.out.println("Node is killed. Cannot send messages.");
+            logger.warn("[LogicalClock:{}]:: sendMessage:: Node {} is killed. Cannot send messages.", logicalClock, nodeId);
             return;
         }
         ObjectOutputStream out = outputStreams.get(receiverId);
         if (out != null) {
             scheduler.schedule(() -> {
                 try {
+                    // Increment logicalClock before sending the message
+                    logger.info("[LogicalClock:{}]:: sendMessage:: Message {} sent to node {} with delay {}ms", logicalClock, msg.getType(), receiverId, sendDelayMs);
                     out.writeObject(msg);
                     out.flush();
-                    System.out.println("Message " + msg.getType() + " sent to node " + receiverId + " with delay " + sendDelayMs + "ms");
                 } catch (IOException e) {
-                    System.out.println("Error during message sending to " + receiverId);
-                    e.printStackTrace();
+                    logger.error("[LogicalClock:{}] Error during message sending to {}", logicalClock, receiverId, e);
                 }
             }, sendDelayMs, TimeUnit.MILLISECONDS);
         } else {
-            System.out.println("No connection with node " + receiverId);
+            logger.warn("[LogicalClock:{}] No connection with node {}", logicalClock, receiverId);
         }
     }
 
+    // Synchronized method to remove a node and notify waiting threads
     private synchronized void removeNode(String nodeId) {
         ObjectOutputStream out = outputStreams.get(nodeId);
         if (out != null) {
             try {
                 out.close();
-                System.out.println("Closed ObjectOutputStream for node " + nodeId);
+                logger.info("[LogicalClock:{}] Closed ObjectOutputStream for node {}", logicalClock, nodeId);
             } catch (IOException e) {
-                System.out.println("Error closing ObjectOutputStream for node " + nodeId);
-                e.printStackTrace();
+                logger.error("[LogicalClock:{}] Error closing ObjectOutputStream for node {}", logicalClock, nodeId, e);
             }
             outputStreams.remove(nodeId);
         }
@@ -506,25 +518,26 @@ public class Node {
         if (address != null) {
             connectedAddresses.remove(address);
             nodeIdToAddressMap.remove(nodeId);
-            System.out.println("Removed address " + address + " for node " + nodeId);
+            logger.info("[LogicalClock:{}] Removed address {} for node {}", logicalClock, address, nodeId);
         }
 
-        System.out.println("Node " + nodeId + " has been removed from connections.");
+        logger.info("[LogicalClock:{}] Node {} has been removed from connections.", logicalClock, nodeId);
 
-        // Уведомляем все ожидающие потоки о изменении состояния
+        // Notify all waiting threads about the change in state
         notifyAll();
     }
 
-    // Метод для обработки входящих сообщений
+    // Method to handle incoming messages
     private synchronized void handleMessage(Message msg) {
         if (!alive) {
-            System.out.println("Node is killed. Ignoring incoming message.");
+            logger.warn("[LogicalClock:{}] Node {} is killed. Ignoring incoming message.", logicalClock, nodeId);
             return;
         }
+        int previousClock = logicalClock;
         logicalClock = Math.max(logicalClock, msg.getTimestamp()) + 1;
         switch (msg.getType()) {
             case REQUEST:
-                System.out.println("Received REQUEST from " + msg.getSenderId());
+                logger.info("[LogicalClock:{}] Received REQUEST from {}", logicalClock, msg.getSenderId());
                 Request incomingRequest = new Request(msg.getTimestamp(), msg.getSenderId());
                 requestQueue.add(incomingRequest);
 
@@ -540,49 +553,61 @@ public class Node {
                 }
 
                 if (shouldReply) {
-                    Message reply = new Message(Message.MessageType.REPLY, getAndIncrementLogicalClock(), nodeId);
+                    Message reply = new Message(Message.MessageType.REPLY, logicalClock, nodeId);
                     sendMessage(msg.getSenderId(), reply);
+                    logger.info("[LogicalClock:{}] Sent REPLY to {}", logicalClock, msg.getSenderId());
                 } else {
                     deferredReplies.put(msg.getSenderId(), true);
+                    logger.info("[LogicalClock:{}] Deferred REPLY to {}", logicalClock, msg.getSenderId());
                 }
                 break;
             case REPLY:
                 repliedNodes.add(msg.getSenderId());
-                System.out.println("Received REPLY from " + msg.getSenderId());
+                logger.info("[LogicalClock:{}] Received REPLY from {}", logicalClock, msg.getSenderId());
                 if (repliedNodes.size() == outputStreams.size()) {
                     notifyAll();
+                    logger.info("[LogicalClock:{}] All REPLY messages received. Notifying waiting thread.", logicalClock);
                 }
                 break;
             case UPDATE:
-                System.out.println("Received UPDATE from " + msg.getSenderId());
+                logger.info("[LogicalClock:{}] Received UPDATE from {}", logicalClock, msg.getSenderId());
                 sharedVariable = msg.getUpdatedValue();
-                System.out.println("Node " + msg.getSenderId() + " updated shared variable to: " + sharedVariable);
+                logger.info("[LogicalClock:{}] Node {} updated shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
                 break;
             case SYNC_REQUEST:
-                // Обработка запроса синхронизации
-                System.out.println("Received SYNC_REQUEST from " + msg.getSenderId());
-                Message syncResponse = new Message(Message.MessageType.SYNC_RESPONSE, getAndIncrementLogicalClock(), nodeId, sharedVariable);
+                // Handle synchronization request
+                logger.info("[LogicalClock:{}] Received SYNC_REQUEST from {}", logicalClock, msg.getSenderId());
+                Message syncResponse = new Message(Message.MessageType.SYNC_RESPONSE, logicalClock, nodeId, sharedVariable);
                 sendMessage(msg.getSenderId(), syncResponse);
+                logger.info("[LogicalClock:{}] Sent SYNC_RESPONSE to {}", logicalClock, msg.getSenderId());
                 break;
             case SYNC_RESPONSE:
-                // Обработка ответа на запрос синхронизации
-                System.out.println("Received SYNC_RESPONSE from " + msg.getSenderId() + ": " + msg.getUpdatedValue());
-                sharedVariable = msg.getUpdatedValue();
+                // Handle synchronization response
+                logger.info("[LogicalClock:{}] Received SYNC_RESPONSE from {}: {}", logicalClock, msg.getSenderId(), msg.getUpdatedValue());
+                if (msg.getTimestamp() > previousClock) {
+                    // Incoming update is more recent
+                    sharedVariable = msg.getUpdatedValue();
+                    logger.info("[LogicalClock:{}] Node {} synced shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
+                } else {
+                    // Incoming update is outdated; ignore
+                    logger.info("[LogicalClock:{}] Received outdated SYNC_RESPONSE from {}. Ignoring.", logicalClock, msg.getSenderId());
+                }
                 break;
             case LEAVE:
-                // Обработка сообщения LEAVE
-                System.out.println("Received LEAVE from " + msg.getSenderId());
+                // Handle LEAVE message
+                logger.info("[LogicalClock:{}] Received LEAVE from {}", logicalClock, msg.getSenderId());
                 if (outputStreams.containsKey(msg.getSenderId())) {
                     removeNode(msg.getSenderId());
-                    System.out.println("Disconnected from node " + msg.getSenderId());
+                    logger.info("[LogicalClock:{}] Disconnected from node {}", logicalClock, msg.getSenderId());
                 }
                 break;
             default:
+                logger.warn("[LogicalClock:{}] Received unknown message type: {}", logicalClock, msg.getType());
                 break;
         }
     }
 
-    // Внутренний класс для представления запроса на критическую секцию
+    // Inner class to represent a request for the critical section
     private static class Request implements Comparable<Request>, Serializable {
         private final int timestamp;
         private final String nodeId;
@@ -614,7 +639,7 @@ public class Node {
         }
     }
 
-    // Внутренний класс для обработки входящих соединений
+    // Inner class to handle incoming connections
     private class ServerHandler implements Runnable {
         @Override
         public void run() {
@@ -624,49 +649,45 @@ public class Node {
                     ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                     ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
 
-                    // Чтение сообщения NODE_ID от подключенного узла
+                    // Read NODE_ID message from the connected node
                     Message idMessage = (Message) in.readObject();
                     if (idMessage.getType() == Message.MessageType.NODE_ID) {
                         String remoteNodeId = idMessage.getSenderId();
                         int remoteMainPort = idMessage.getMainPort();
 
-                        // Отправка собственного NODE_ID
-                        out.writeObject(new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId));
+                        // Send own NODE_ID message with the main port
+                        Message ownNodeIdMsg = new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId, port);
+                        out.writeObject(ownNodeIdMsg);
                         out.flush();
+                        logger.info("[LogicalClock:{}] Sent NODE_ID to {}", logicalClock, clientSocket.getRemoteSocketAddress());
 
                         if (!outputStreams.containsKey(remoteNodeId)) {
-                            // Добавление соединения
+                            // Add the connection
                             outputStreams.put(remoteNodeId, out);
                             InetSocketAddress mainAddress = new InetSocketAddress("localhost", remoteMainPort);
                             nodeIdToAddressMap.put(remoteNodeId, mainAddress);
                             connectedAddresses.add(mainAddress);
-                            System.out.println("ServerHandler:: Received NODE_ID from " + remoteNodeId + " at " + mainAddress);
+                            logger.info("[LogicalClock:{}] Received NODE_ID from {} at {}", logicalClock, remoteNodeId, mainAddress);
 
-                            // Отправка SYNC_REQUEST
-                            Message syncRequest = new Message(Message.MessageType.SYNC_REQUEST, getAndIncrementLogicalClock(), nodeId);
-                            sendMessage(remoteNodeId, syncRequest);
-                            System.out.println("ServerHandler:: Sent SYNC_REQUEST to " + remoteNodeId);
-
-                            // Запуск обработчика клиента
+                            // Start client handler
                             new Thread(new ClientHandler(clientSocket, in, out)).start();
                         } else {
-                            // Соединение уже существует, закрываем новое входящее соединение
-                            System.out.println("ServerHandler:: Node " + remoteNodeId + " is already connected. Closing new connection.");
+                            // Connection already exists, close the new incoming connection
+                            logger.warn("[LogicalClock:{}] Node {} is already connected. Closing new connection.", logicalClock, remoteNodeId);
                             clientSocket.close();
                         }
                     } else {
-                        System.out.println("Unexpected message type during handshake from " + clientSocket.getRemoteSocketAddress());
+                        logger.warn("[LogicalClock:{}] Unexpected message type during handshake from {}", logicalClock, clientSocket.getRemoteSocketAddress());
                         clientSocket.close();
                     }
                 } catch (IOException | ClassNotFoundException e) {
-                    System.out.println("Error accepting connection.");
-                    e.printStackTrace();
+                    logger.error("[LogicalClock:{}] Error accepting connection.", logicalClock, e);
                 }
             }
         }
     }
 
-    // Внутренний класс для обработки сообщений от конкретного узла
+    // Inner class to handle messages from a specific node
     private class ClientHandler implements Runnable {
         private final Socket socket;
         private final ObjectInputStream in;
@@ -681,7 +702,7 @@ public class Node {
         @Override
         public void run() {
             try {
-                while (alive) { // Обработка сообщений только если узел жив
+                while (alive) { // Handle messages only if the node is alive
                     Message msg = (Message) in.readObject();
                     handleMessage(msg);
                 }
@@ -696,30 +717,31 @@ public class Node {
                     }
                     if (disconnectedNodeId != null) {
                         removeNode(disconnectedNodeId);
+                        logger.info("[LogicalClock:{}] Connection with node {} has been terminated.", logicalClock, disconnectedNodeId);
                     }
                 }
 
                 try {
                     socket.close();
                 } catch (IOException exception) {
-                    exception.printStackTrace();
+                    logger.error("[LogicalClock:{}] Error closing socket for node {}", logicalClock, disconnectedNodeId, exception);
                 }
             }
         }
     }
 
-    // Метод для установки задержки в отправке сообщений
+    // Method to set the message sending delay
     public synchronized void setSendDelay(int delayMs) {
         this.sendDelayMs = delayMs;
-        System.out.println("Send delay set to " + delayMs + "ms.");
+        logger.info("[LogicalClock:{}] Send delay set to {}ms.", logicalClock, delayMs);
     }
 
-    // Метод для поиска адреса по nodeId
+    // Method to find the address by nodeId
     private InetSocketAddress findAddressByNodeId(String nodeId) {
         return nodeIdToAddressMap.get(nodeId);
     }
 
-    // Метод для получения и инкрементации логического времени
+    // Synchronized method to get and increment the logical clock
     private synchronized int getAndIncrementLogicalClock() {
         logicalClock++;
         return logicalClock;
