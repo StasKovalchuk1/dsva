@@ -664,7 +664,7 @@ public class Node {
                         if (!outputStreams.containsKey(remoteNodeId)) {
                             // Add the connection
                             outputStreams.put(remoteNodeId, out);
-                            InetSocketAddress mainAddress = new InetSocketAddress("localhost", remoteMainPort);
+                            InetSocketAddress mainAddress = new InetSocketAddress(clientSocket.getInetAddress().getHostAddress(), remoteMainPort);
                             nodeIdToAddressMap.put(remoteNodeId, mainAddress);
                             connectedAddresses.add(mainAddress);
                             logger.info("[LogicalClock:{}] Received NODE_ID from {} at {}", logicalClock, remoteNodeId, mainAddress);
