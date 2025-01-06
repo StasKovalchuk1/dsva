@@ -294,8 +294,7 @@ public class Node {
         }
 
         setSendDelay(delay);
-        logger.info("[LogicalClock:{}] Send delay set to {}ms.", logicalClock, delay);
-        ctx.json(Collections.singletonMap("status", "Send delay set to " + delay + "ms."));
+        ctx.json(Collections.singletonMap("status", "Set delay set to " + delay + "ms."));
     }
 
     // Endpoint to get the current message sending delay
@@ -546,8 +545,11 @@ public class Node {
                 if (!requestingCS) {
                     shouldReply = true;
                 } else {
-                    Request currentRequest = requestQueue.peek();
-                    if (currentRequest != null && incomingRequest.compareTo(currentRequest) < 0) {
+                    Request myRequest = requestQueue.stream()
+                            .filter(r -> r.getNodeId().equals(nodeId))
+                            .findFirst()
+                            .orElse(null);
+                    if (myRequest != null && incomingRequest.compareTo(myRequest) < 0) {
                         shouldReply = true;
                     }
                 }
@@ -615,6 +617,10 @@ public class Node {
         public Request(int timestamp, String nodeId) {
             this.timestamp = timestamp;
             this.nodeId = nodeId;
+        }
+
+        public String getNodeId() {
+            return nodeId;
         }
 
         @Override
@@ -733,7 +739,7 @@ public class Node {
     // Method to set the message sending delay
     public synchronized void setSendDelay(int delayMs) {
         this.sendDelayMs = delayMs;
-        logger.info("[LogicalClock:{}] Send delay set to {}ms.", logicalClock, delayMs);
+        logger.info("[LogicalClock:{}] Set delay set to {}ms.", logicalClock, delayMs);
     }
 
     // Method to find the address by nodeId
