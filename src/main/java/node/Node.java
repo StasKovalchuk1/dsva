@@ -398,7 +398,7 @@ public class Node {
 
         inCS = false;
         requestingCS = false;
-        requestQueue.poll();
+        requestQueue.removeIf(r -> r.getNodeId().equals(nodeId));
 
         for (Map.Entry<String, Boolean> entry : deferredReplies.entrySet()) {
             if (entry.getValue()) {
@@ -490,6 +490,7 @@ public class Node {
             case REQUEST:
                 logger.info("[LogicalClock:{}] Received REQUEST from {}", logicalClock, msg.getSenderId());
                 Request incomingRequest = new Request(msg.getTimestamp(), msg.getSenderId());
+                requestQueue.removeIf(r -> r.getNodeId().equals(incomingRequest.getNodeId()));
                 requestQueue.add(incomingRequest);
 
                 boolean shouldReply = false;
@@ -501,6 +502,9 @@ public class Node {
                             .filter(r -> r.getNodeId().equals(nodeId))
                             .findFirst()
                             .orElse(null);
+                    if (myRequest != null) {
+                        logger.info("[LogicalClock:{}] Compare incoming REQUEST [{}] with own REQUEST [{}] from {}", logicalClock, incomingRequest.getTimestamp(), myRequest.getTimestamp(), msg.getSenderId());
+                    }
                     if (myRequest != null && incomingRequest.compareTo(myRequest) < 0) {
                         shouldReply = true;
                     }
@@ -567,6 +571,10 @@ public class Node {
 
         public String getNodeId() {
             return nodeId;
+        }
+
+        public int getTimestamp() {
+            return timestamp;
         }
 
         @Override
