@@ -662,7 +662,7 @@ public class Node {
                 String disconnectedNodeId = null;
                 synchronized (Node.this) {
                     for (Map.Entry<String, ObjectOutputStream> entry : outputStreams.entrySet()) {
-                        if (entry.getValue() == out) {
+                        if (entry.getValue().equals(out)) {
                             disconnectedNodeId = entry.getKey();
                             break;
                         }
