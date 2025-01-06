@@ -82,14 +82,10 @@ public class Node {
     }
 
     private void setupJavalin() {
-        app = Javalin.create(config -> {
-            // No need to set defaultContentType here
-        }).start(port + 1000); // Use port + 1000 for Javalin to avoid conflicts
+        app = Javalin.create(config -> {}).start(port + 1000);
 
-        // Set content type for all requests
         app.before(ctx -> ctx.contentType("application/json"));
 
-        // Define REST endpoints
         app.get("/read", this::handleRead);
         app.post("/write", this::handleWrite);
         app.post("/request", this::handleRequestCS);
@@ -98,20 +94,18 @@ public class Node {
         app.post("/leave", this::handleLeave);
         app.post("/kill", this::handleKill);
         app.post("/revive", this::handleRevive);
-        app.post("/delay", this::handleSetDelay); // New endpoint
-        app.get("/delay", this::handleGetDelay);    // New endpoint (optional)
+        app.post("/delay", this::handleSetDelay);
+        app.get("/delay", this::handleGetDelay);
         app.get("/status", this::handleStatus);
         app.post("/shutdown", this::handleShutdown);
 
         logger.info("[LogicalClock:{}] Javalin server started on port {}", logicalClock, port + 1000);
     }
 
-    // Endpoint to read the shared variable
     private void handleRead(Context ctx) {
         ctx.json(Collections.singletonMap("sharedVariable", sharedVariable));
     }
 
-    // Endpoint to write to the shared variable
     private void handleWrite(Context ctx) {
         Map<String, String> body;
         try {
@@ -136,19 +130,16 @@ public class Node {
         }
     }
 
-    // Endpoint to request entry into the critical section
     private void handleRequestCS(Context ctx) {
         new Thread(this::requestCriticalSection).start();
         ctx.json(Collections.singletonMap("status", "Critical section requested."));
     }
 
-    // Endpoint to release the critical section
     private void handleReleaseCS(Context ctx) {
         releaseCriticalSection();
         ctx.json(Collections.singletonMap("status", "Critical section released."));
     }
 
-    // Endpoint to join new nodes
     private void handleJoin(Context ctx) {
         List<String> nodesToJoin;
         try {
@@ -175,21 +166,18 @@ public class Node {
             }
             InetSocketAddress address = new InetSocketAddress(host, port);
             newNodes.add(address);
-            knownNodesAddresses.add(address); // Add to known nodes list for restoration
+            knownNodesAddresses.add(address);
         }
         new Thread(() -> connectToNodes(newNodes)).start();
         logger.info("[LogicalClock:{}] Join initiated for nodes: {}", logicalClock, nodesToJoin);
         ctx.json(Collections.singletonMap("status", "Join initiated for nodes: " + nodesToJoin));
     }
 
-    // Endpoint to gracefully leave all nodes
     private void handleLeave(Context ctx) {
-        // If the current node is in the critical section, release it
         if (inCS) {
             releaseCriticalSection();
         }
 
-        // Get a copy of all connected nodes for safe iteration
         Set<String> nodesToLeave = new HashSet<>(outputStreams.keySet());
 
         List<String> successfullyLeft = new ArrayList<>();
@@ -197,17 +185,15 @@ public class Node {
 
         for (String nodeIdToLeave : nodesToLeave) {
             if (outputStreams.containsKey(nodeIdToLeave)) {
-                // Create a LEAVE message
                 Message leaveMsg = new Message(Message.MessageType.LEAVE, getAndIncrementLogicalClock(), this.nodeId);
                 sendMessage(nodeIdToLeave, leaveMsg);
 
-                // Close the connection and remove the node from data structures
                 try {
                     ObjectOutputStream out = outputStreams.get(nodeIdToLeave);
                     if (out != null) {
-                        out.close(); // Close the stream
+                        out.close();
                     }
-                    removeNode(nodeIdToLeave); // Remove the node from all data structures
+                    removeNode(nodeIdToLeave);
                     successfullyLeft.add(nodeIdToLeave);
                     logger.info("[LogicalClock:{}] Successfully left node {}", logicalClock, nodeIdToLeave);
                 } catch (IOException e) {
@@ -220,7 +206,6 @@ public class Node {
             }
         }
 
-        // Send a response to the client with the results of the operation
         ctx.json(Map.of(
                 "status", "Leave operation completed.",
                 "successfullyLeft", successfullyLeft,
@@ -228,21 +213,18 @@ public class Node {
         ));
     }
 
-    // Endpoint to simulate an unexpected node failure (kill)
     private void handleKill(Context ctx) {
         if (!alive) {
             ctx.status(400).json(Collections.singletonMap("error", "Node is already killed."));
             return;
         }
         alive = false;
-        // Close all connections without sending LEAVE messages
         for (String nodeId : new ArrayList<>(outputStreams.keySet())) {
             try {
                 ObjectOutputStream out = outputStreams.get(nodeId);
                 if (out != null) {
                     out.close();
                 }
-                // Remove the node from connectedAddresses and nodeIdToAddressMap
                 InetSocketAddress address = findAddressByNodeId(nodeId);
                 if (address != null) {
                     connectedAddresses.remove(address);
@@ -259,7 +241,6 @@ public class Node {
         ctx.json(Collections.singletonMap("status", "Node has been killed. All connections closed."));
     }
 
-    // Endpoint to revive the node after a kill
     private void handleRevive(Context ctx) {
         if (alive) {
             ctx.status(400).json(Collections.singletonMap("error", "Node is already alive."));
@@ -270,14 +251,12 @@ public class Node {
         requestingCS = false;
         logger.info("[LogicalClock:{}] Node {} is being revived. Reconnecting to known nodes.", logicalClock, nodeId);
 
-        // Clear connectedAddresses before attempting to connect
         connectedAddresses.clear();
         connectToNodes(knownNodesAddresses);
 
         ctx.json(Collections.singletonMap("status", "Node has been revived. Reconnecting to known nodes."));
     }
 
-    // Endpoint to set the message sending delay
     private void handleSetDelay(Context ctx) {
         Map<String, Integer> body;
         try {
@@ -297,12 +276,10 @@ public class Node {
         ctx.json(Collections.singletonMap("status", "Set delay set to " + delay + "ms."));
     }
 
-    // Endpoint to get the current message sending delay
     private void handleGetDelay(Context ctx) {
         ctx.json(Collections.singletonMap("delay", sendDelayMs));
     }
 
-    // Endpoint to get the status of the node
     private void handleStatus(Context ctx) {
         Map<String, Object> status = new HashMap<>();
         status.put("nodeId", nodeId);
@@ -318,7 +295,6 @@ public class Node {
         ctx.json(status);
     }
 
-    // Endpoint to gracefully shut down the node
     private void handleShutdown(Context ctx) {
         logger.info("[LogicalClock:{}] Shutting down node {}...", logicalClock, nodeId);
         app.stop();
@@ -334,17 +310,15 @@ public class Node {
         System.exit(0);
     }
 
-    // Method to connect to the initial nodes
     private void connectToInitialOtherNodes() {
         connectToNodes(initialOtherNodesAddresses);
     }
 
-    // Method to connect to a list of nodes
     private void connectToNodes(List<InetSocketAddress> nodes) {
         for (InetSocketAddress address : nodes) {
             if (connectedAddresses.contains(address)) {
                 logger.info("[LogicalClock:{}] Already connected to {}", logicalClock, address);
-                continue; // Already connected
+                continue;
             }
             try {
                 logger.info("[LogicalClock:{}] Attempting to connect to {}", logicalClock, address);
@@ -353,27 +327,23 @@ public class Node {
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
-                // Send NODE_ID message
                 Message nodeIdMsg = new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId, port);
                 out.writeObject(nodeIdMsg);
                 out.flush();
 
-                // Read NODE_ID message from the remote node
                 Message idMessage = (Message) in.readObject();
                 if (idMessage.getType() == Message.MessageType.NODE_ID) {
                     String remoteNodeId = idMessage.getSenderId();
                     synchronized (this) {
                         outputStreams.put(remoteNodeId, out);
-                        nodeIdToAddressMap.put(remoteNodeId, address); // Add to map
+                        nodeIdToAddressMap.put(remoteNodeId, address);
                     }
                     connectedAddresses.add(address);
                     logger.info("[LogicalClock:{}] Successfully connected to {} at {}", logicalClock, remoteNodeId, address);
 
-                    // Send SYNC_REQUEST
                     Message syncRequest = new Message(Message.MessageType.SYNC_REQUEST, getAndIncrementLogicalClock(), nodeId);
                     sendMessage(remoteNodeId, syncRequest);
 
-                    // Start client handler
                     new Thread(new ClientHandler(socket, in, out)).start();
                 } else {
                     logger.warn("[LogicalClock:{}] Unexpected message type during handshake from {}", logicalClock, address);
@@ -381,12 +351,10 @@ public class Node {
                 }
             } catch (IOException | ClassNotFoundException e) {
                 logger.error("[LogicalClock:{}] Unable to connect to {}. Error: {}", logicalClock, address, e.getMessage());
-                // Optionally add retry logic here
             }
         }
     }
 
-    // Method to write to the shared variable
     private synchronized boolean writeSharedVariable(String value) {
         if (!inCS) {
             logger.warn("[LogicalClock:{}] Attempted to change shared variable without entering critical section.", logicalClock);
@@ -400,7 +368,6 @@ public class Node {
         return true;
     }
 
-    // Method to request entry into the critical section
     public synchronized void requestCriticalSection() {
         requestingCS = true;
         Request request = new Request(getAndIncrementLogicalClock(), nodeId);
@@ -411,7 +378,6 @@ public class Node {
         broadcast(msg);
         logger.info("[LogicalClock:{}] Broadcasted REQUEST message for critical section.", logicalClock);
 
-        // Wait for replies from all other nodes
         while (repliedNodes.size() < outputStreams.size()) {
             try {
                 wait();
@@ -420,12 +386,10 @@ public class Node {
             }
         }
 
-        // Enter the critical section
         inCS = true;
         logger.info("[LogicalClock:{}] Node {} entered critical section.", logicalClock, nodeId);
     }
 
-    // Method to release the critical section
     public synchronized void releaseCriticalSection() {
         if (!inCS) {
             logger.warn("[LogicalClock:{}] Node {} is not in critical section.", logicalClock, nodeId);
@@ -449,18 +413,11 @@ public class Node {
         logger.info("[LogicalClock:{}] Node {} left critical section.", logicalClock, nodeId);
     }
 
-    // Method to read the shared variable (logged)
-    public synchronized void readSharedVariable() {
-        logger.info("[LogicalClock:{}] Current value of shared variable: {}", logicalClock, sharedVariable);
-    }
-
-    // Method to broadcast a message to all nodes
     private void broadcast(Message msg) {
         if (!alive) {
             logger.warn("[LogicalClock:{}]:: broadcast:: Node {} is killed. Cannot send messages.", logicalClock, nodeId);
             return;
         }
-        // Increment logicalClock before sending the message
         logger.info("[LogicalClock:{}] Sending message {} to all nodes - {}", logicalClock, msg.getType(), outputStreams.keySet());
         for (Map.Entry<String, ObjectOutputStream> entry : outputStreams.entrySet()) {
             String receiverId = entry.getKey();
@@ -477,7 +434,6 @@ public class Node {
         }
     }
 
-    // Method to send a message to a specific node
     private void sendMessage(String receiverId, Message msg) {
         if (!alive) {
             logger.warn("[LogicalClock:{}]:: sendMessage:: Node {} is killed. Cannot send messages.", logicalClock, nodeId);
@@ -487,7 +443,6 @@ public class Node {
         if (out != null) {
             scheduler.schedule(() -> {
                 try {
-                    // Increment logicalClock before sending the message
                     logger.info("[LogicalClock:{}]:: sendMessage:: Message {} sent to node {} with delay {}ms", logicalClock, msg.getType(), receiverId, sendDelayMs);
                     out.writeObject(msg);
                     out.flush();
@@ -500,7 +455,6 @@ public class Node {
         }
     }
 
-    // Synchronized method to remove a node and notify waiting threads
     private synchronized void removeNode(String nodeId) {
         ObjectOutputStream out = outputStreams.get(nodeId);
         if (out != null) {
@@ -522,11 +476,9 @@ public class Node {
 
         logger.info("[LogicalClock:{}] Node {} has been removed from connections.", logicalClock, nodeId);
 
-        // Notify all waiting threads about the change in state
         notifyAll();
     }
 
-    // Method to handle incoming messages
     private synchronized void handleMessage(Message msg) {
         if (!alive) {
             logger.warn("[LogicalClock:{}] Node {} is killed. Ignoring incoming message.", logicalClock, nodeId);
@@ -577,26 +529,21 @@ public class Node {
                 logger.info("[LogicalClock:{}] Node {} updated shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
                 break;
             case SYNC_REQUEST:
-                // Handle synchronization request
                 logger.info("[LogicalClock:{}] Received SYNC_REQUEST from {}", logicalClock, msg.getSenderId());
                 Message syncResponse = new Message(Message.MessageType.SYNC_RESPONSE, logicalClock, nodeId, sharedVariable);
                 sendMessage(msg.getSenderId(), syncResponse);
                 logger.info("[LogicalClock:{}] Sent SYNC_RESPONSE to {}", logicalClock, msg.getSenderId());
                 break;
             case SYNC_RESPONSE:
-                // Handle synchronization response
                 logger.info("[LogicalClock:{}] Received SYNC_RESPONSE from {}: {}", logicalClock, msg.getSenderId(), msg.getUpdatedValue());
                 if (msg.getTimestamp() > previousClock) {
-                    // Incoming update is more recent
                     sharedVariable = msg.getUpdatedValue();
                     logger.info("[LogicalClock:{}] Node {} synced shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
                 } else {
-                    // Incoming update is outdated; ignore
                     logger.info("[LogicalClock:{}] Received outdated SYNC_RESPONSE from {}. Ignoring.", logicalClock, msg.getSenderId());
                 }
                 break;
             case LEAVE:
-                // Handle LEAVE message
                 logger.info("[LogicalClock:{}] Received LEAVE from {}", logicalClock, msg.getSenderId());
                 if (outputStreams.containsKey(msg.getSenderId())) {
                     removeNode(msg.getSenderId());
@@ -609,7 +556,6 @@ public class Node {
         }
     }
 
-    // Inner class to represent a request for the critical section
     private static class Request implements Comparable<Request>, Serializable {
         private final int timestamp;
         private final String nodeId;
@@ -645,7 +591,6 @@ public class Node {
         }
     }
 
-    // Inner class to handle incoming connections
     private class ServerHandler implements Runnable {
         @Override
         public void run() {
@@ -655,35 +600,29 @@ public class Node {
                     ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                     ObjectInputStream in = new ObjectInputStream(clientSocket.getInputStream());
 
-                    // Read NODE_ID message from the connected node
                     Message idMessage = (Message) in.readObject();
                     if (idMessage.getType() == Message.MessageType.NODE_ID) {
                         String remoteNodeId = idMessage.getSenderId();
                         int remoteMainPort = idMessage.getMainPort();
 
-                        // Send own NODE_ID message with the main port
                         Message ownNodeIdMsg = new Message(Message.MessageType.NODE_ID, getAndIncrementLogicalClock(), nodeId, port);
                         out.writeObject(ownNodeIdMsg);
                         out.flush();
                         logger.info("[LogicalClock:{}] Sent NODE_ID to {}", logicalClock, clientSocket.getRemoteSocketAddress());
 
                         if (!outputStreams.containsKey(remoteNodeId)) {
-                            // Add the connection
                             outputStreams.put(remoteNodeId, out);
                             InetSocketAddress mainAddress = new InetSocketAddress(clientSocket.getInetAddress().getHostAddress(), remoteMainPort);
                             nodeIdToAddressMap.put(remoteNodeId, mainAddress);
                             connectedAddresses.add(mainAddress);
                             logger.info("[LogicalClock:{}] Received NODE_ID from {} at {}", logicalClock, remoteNodeId, mainAddress);
 
-                            // Start client handler
                             new Thread(new ClientHandler(clientSocket, in, out)).start();
                         } else {
-                            // Connection already exists, close the new incoming connection
                             logger.warn("[LogicalClock:{}] Node {} is already connected. Closing new connection.", logicalClock, remoteNodeId);
                             clientSocket.close();
                         }
                     } else {
-                        logger.warn("[LogicalClock:{}] Unexpected message type during handshake from {}", logicalClock, clientSocket.getRemoteSocketAddress());
                         clientSocket.close();
                     }
                 } catch (IOException | ClassNotFoundException e) {
@@ -693,7 +632,6 @@ public class Node {
         }
     }
 
-    // Inner class to handle messages from a specific node
     private class ClientHandler implements Runnable {
         private final Socket socket;
         private final ObjectInputStream in;
@@ -708,7 +646,7 @@ public class Node {
         @Override
         public void run() {
             try {
-                while (alive) { // Handle messages only if the node is alive
+                while (alive) {
                     Message msg = (Message) in.readObject();
                     handleMessage(msg);
                 }
@@ -736,18 +674,15 @@ public class Node {
         }
     }
 
-    // Method to set the message sending delay
     public synchronized void setSendDelay(int delayMs) {
         this.sendDelayMs = delayMs;
         logger.info("[LogicalClock:{}] Set delay set to {}ms.", logicalClock, delayMs);
     }
 
-    // Method to find the address by nodeId
     private InetSocketAddress findAddressByNodeId(String nodeId) {
         return nodeIdToAddressMap.get(nodeId);
     }
 
-    // Synchronized method to get and increment the logical clock
     private synchronized int getAndIncrementLogicalClock() {
         logicalClock++;
         return logicalClock;
