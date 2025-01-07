@@ -225,11 +225,6 @@ public class Node {
                 if (out != null) {
                     out.close();
                 }
-                InetSocketAddress address = findAddressByNodeId(nodeId);
-                if (address != null) {
-                    connectedAddresses.remove(address);
-                    nodeIdToAddressMap.remove(nodeId);
-                }
                 logger.info("[LogicalClock:{}] Node {} has been killed and disconnected.", logicalClock, nodeId);
             } catch (IOException e) {
                 logger.error("[LogicalClock:{}] Error killing node {}", logicalClock, nodeId, e);
@@ -471,6 +466,7 @@ public class Node {
         if (address != null) {
             connectedAddresses.remove(address);
             nodeIdToAddressMap.remove(nodeId);
+            repliedNodes.remove(nodeId);
             logger.info("[LogicalClock:{}] Removed address {} for node {}", logicalClock, address, nodeId);
         }
 
@@ -497,7 +493,7 @@ public class Node {
 
                 if (!requestingCS) {
                     shouldReply = true;
-                } else {
+                } else if (!inCS){
                     Request myRequest = requestQueue.stream()
                             .filter(r -> r.getNodeId().equals(nodeId))
                             .findFirst()
