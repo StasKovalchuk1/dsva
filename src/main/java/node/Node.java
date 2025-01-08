@@ -369,6 +369,10 @@ public class Node {
     }
 
     public synchronized void requestCriticalSection() {
+        if (requestingCS || inCS) {
+            logger.warn("[LogicalClock:{}] Node {} is already requesting or in critical section.", logicalClock, nodeId);
+            return;
+        }
         requestingCS = true;
         Request request = new Request(getAndIncrementLogicalClock(), nodeId);
         requestQueue.add(request);
@@ -490,7 +494,7 @@ public class Node {
         logicalClock = Math.max(logicalClock, msg.getTimestamp()) + 1;
         switch (msg.getType()) {
             case REQUEST:
-                logger.info("[LogicalClock:{}] Received REQUEST from {}", logicalClock, msg.getSenderId());
+                logger.info("[LogicalClock:{}, Node{}] Received REQUEST from {}", logicalClock, nodeId, msg.getSenderId());
                 Request incomingRequest = new Request(msg.getTimestamp(), msg.getSenderId());
                 requestQueue.removeIf(r -> r.getNodeId().equals(incomingRequest.getNodeId()));
                 requestQueue.add(incomingRequest);
@@ -527,7 +531,7 @@ public class Node {
                     return;
                 }
                 repliedNodes.add(msg.getSenderId());
-                logger.info("[LogicalClock:{}] Received REPLY from {}", logicalClock, msg.getSenderId());
+                logger.info("[LogicalClock:{}, Node{}] Received REPLY from {}", logicalClock, nodeId, msg.getSenderId());
                 if (repliedNodes.size() == outputStreams.size()) {
                     notifyAll();
                     logger.info("[LogicalClock:{}] All REPLY messages received. Notifying waiting thread.", logicalClock);
