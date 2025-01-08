@@ -14,11 +14,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class Node {
     private static final Logger logger = LoggerFactory.getLogger(Node.class);
@@ -186,7 +182,16 @@ public class Node {
         for (String nodeIdToLeave : nodesToLeave) {
             if (outputStreams.containsKey(nodeIdToLeave)) {
                 Message leaveMsg = new Message(Message.MessageType.LEAVE, getAndIncrementLogicalClock(), this.nodeId);
-                sendMessage(nodeIdToLeave, leaveMsg);
+                Future<?> future = sendMessage(nodeIdToLeave, leaveMsg);
+
+                if (future != null) {
+                    try {
+                        future.get();
+                    } catch (InterruptedException | ExecutionException e) {
+                        logger.error("[LogicalClock:{}] Error Waiting for LEAVE message to be sent to {}",
+                                logicalClock, nodeIdToLeave, e);
+                    }
+                }
 
                 try {
                     ObjectOutputStream out = outputStreams.get(nodeIdToLeave);
@@ -429,14 +434,14 @@ public class Node {
         }
     }
 
-    private void sendMessage(String receiverId, Message msg) {
+    private Future<?> sendMessage(String receiverId, Message msg) {
         if (!alive) {
             logger.warn("[LogicalClock:{}]:: sendMessage:: Node {} is killed. Cannot send messages.", logicalClock, nodeId);
-            return;
+            return null;
         }
         ObjectOutputStream out = outputStreams.get(receiverId);
         if (out != null) {
-            scheduler.schedule(() -> {
+            return scheduler.schedule(() -> {
                 try {
                     logger.info("[LogicalClock:{}]:: sendMessage:: Message {} sent to node {} with delay {}ms", logicalClock, msg.getType(), receiverId, sendDelayMs);
                     out.writeObject(msg);
@@ -447,6 +452,7 @@ public class Node {
             }, sendDelayMs, TimeUnit.MILLISECONDS);
         } else {
             logger.warn("[LogicalClock:{}] No connection with node {}", logicalClock, receiverId);
+            return null;
         }
     }
 
@@ -516,6 +522,10 @@ public class Node {
                 }
                 break;
             case REPLY:
+                if (repliedNodes.contains(msg.getSenderId())) {
+                    logger.warn("[LogicalClock:{}] Received duplicate REPLY from {}", logicalClock, msg.getSenderId());
+                    return;
+                }
                 repliedNodes.add(msg.getSenderId());
                 logger.info("[LogicalClock:{}] Received REPLY from {}", logicalClock, msg.getSenderId());
                 if (repliedNodes.size() == outputStreams.size()) {
@@ -536,12 +546,8 @@ public class Node {
                 break;
             case SYNC_RESPONSE:
                 logger.info("[LogicalClock:{}] Received SYNC_RESPONSE from {}: {}", logicalClock, msg.getSenderId(), msg.getUpdatedValue());
-                if (msg.getTimestamp() > previousClock) {
-                    sharedVariable = msg.getUpdatedValue();
-                    logger.info("[LogicalClock:{}] Node {} synced shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
-                } else {
-                    logger.info("[LogicalClock:{}] Received outdated SYNC_RESPONSE from {}. Ignoring.", logicalClock, msg.getSenderId());
-                }
+                sharedVariable = msg.getUpdatedValue();
+                logger.info("[LogicalClock:{}] Node {} synced shared variable to: {}", logicalClock, msg.getSenderId(), sharedVariable);
                 break;
             case LEAVE:
                 logger.info("[LogicalClock:{}] Received LEAVE from {}", logicalClock, msg.getSenderId());
@@ -619,7 +625,25 @@ public class Node {
                             InetSocketAddress mainAddress = new InetSocketAddress(clientSocket.getInetAddress().getHostAddress(), remoteMainPort);
                             nodeIdToAddressMap.put(remoteNodeId, mainAddress);
                             connectedAddresses.add(mainAddress);
+                            if(!knownNodesAddresses.contains(mainAddress)) knownNodesAddresses.add(mainAddress);
                             logger.info("[LogicalClock:{}] Received NODE_ID from {} at {}", logicalClock, remoteNodeId, mainAddress);
+
+                            synchronized (Node.this) {
+                                if (requestingCS) {
+                                    Request myRequest = requestQueue.stream()
+                                            .filter(r -> r.getNodeId().equals(nodeId))
+                                            .findFirst()
+                                            .orElse(null);
+                                    if (myRequest != null) {
+                                        Message requestMsg = new Message(
+                                                Message.MessageType.REQUEST,
+                                                myRequest.getTimestamp(),
+                                                nodeId
+                                        );
+                                        sendMessage(remoteNodeId, requestMsg);
+                                    }
+                                }
+                            }
 
                             new Thread(new ClientHandler(clientSocket, in, out)).start();
                         } else {
